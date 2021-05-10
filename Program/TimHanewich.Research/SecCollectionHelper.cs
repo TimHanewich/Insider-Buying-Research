@@ -3,7 +3,8 @@ using SecuritiesExchangeCommission.Edgar;
 using System.Threading.Tasks;
 using Aletheia.Engine;
 using System.Collections.Generic;
-
+using TimHanewich.Investing;
+using Newtonsoft.Json;
 namespace TimHanewich.Reserch
 {
     public class SecCollectionHelper
@@ -70,6 +71,36 @@ namespace TimHanewich.Reserch
             
             TryPrintStatus("Complete! " + ToReturn.Count.ToString("#,##0") + " non-derivative transactions found.");
             return ToReturn.ToArray();
+        }
+
+        public async Task StoreSP500NonDerivateTransactionsInFolderAsync(string folder_path)
+        {
+            Console.WriteLine("Getting S&P500 list...");
+            string[] sp500 = await TimHanewich.Investing.InvestingToolkit.GetEquityGroupAsync(EquityGroup.SP500);
+            Console.WriteLine(sp500.Length.ToString() + " stocks found.");
+
+            foreach (string s in sp500)
+            {
+                ConsoleColor oc = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("[ " + s.ToString() + " ]");
+                Console.ForegroundColor = oc;
+
+                try
+                {
+                    Console.WriteLine("Collecting...");
+                    NonDerivativeTransaction[] transactions = await GetAllNonDerivativeTransactionsAsync(s, true);
+                    Console.WriteLine("Writing to file...");
+                    System.IO.File.WriteAllText(folder_path + "\\" + s + ".json", JsonConvert.SerializeObject(transactions));
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Fatal failre on stock " + s + ": " + ex.Message);
+                    Console.ForegroundColor = oc;
+                }
+                
+            }
         }
 
         private void TryPrintStatus(string status)
