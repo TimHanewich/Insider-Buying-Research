@@ -51,7 +51,7 @@ namespace TimHanewich.Reserch
 
                 //Search again
                 UpdateStatus("Querying again...");
-                sths = await service.LatestTransactionsAsync(company_cik_or_symbol, null, 100, null, SecurityType.NonDerivative, TransactionType.OpenMarketOrPrivatePurchase);
+                sths = await service.LatestTransactionsAsync(company_cik_or_symbol, null, 100, oldest, SecurityType.NonDerivative, TransactionType.OpenMarketOrPrivatePurchase);
             }
 
             UpdateStatus("Collection complete! " + ToReturn.Count.ToString("#,##0") + " found.");
