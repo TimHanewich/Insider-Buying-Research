@@ -31,7 +31,7 @@ namespace TimHanewich.Reserch
         public NonDerivativeTransaction[] FilterToBuys(NonDerivativeTransaction[] all)
         {
             List<NonDerivativeTransaction> ToReturn = new List<NonDerivativeTransaction>();
-            foreach (NonDerivativeTransaction ndt in ToReturn)
+            foreach (NonDerivativeTransaction ndt in all)
             {
                 if (ndt.AcquiredOrDisposed == AcquiredDisposed.Acquired)
                 {
