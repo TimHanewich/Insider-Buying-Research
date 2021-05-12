@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Aletheia" Version="3.3.1" />
     <PackageReference Include="TimHanewich.Investing" Version="4.0.1" />
+    <PackageReference Include="Yahoo.Finance" Version="4.0.0" />
   </ItemGroup>
 
 </Project>
