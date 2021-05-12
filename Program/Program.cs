@@ -11,7 +11,7 @@ namespace Insider_Buying_Research
         static void Main(string[] args)
         {
             SecCollectionHelper colhelp = new SecCollectionHelper();
-            colhelp.StoreSP500NonDerivateTransactionsInFolderAsync(args[0]).Wait();
+            colhelp.StoreSP500StatementOfOwnershipsInFolderAsync(args[0]).Wait();
         }
     }
 }
