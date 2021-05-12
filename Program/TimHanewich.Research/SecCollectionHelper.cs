@@ -101,7 +101,7 @@ namespace TimHanewich.Reserch
                     }
                     else
                     {
-                        Console.WriteLine("It does have content, skipping this one!");
+                        Console.WriteLine("It does have " + transactions.Length.ToString("#,##0") + " transactions, skipping this one!");
                         ShouldCollect = false;
                     }
                 }
