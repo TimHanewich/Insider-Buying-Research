@@ -19,12 +19,15 @@ namespace TimHanewich.Reserch
             TryPrintStatus("Getting all form 3 filings...");
             EdgarFiling[] filings3 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "3", false);
             TryPrintStatus(filings3.Length.ToString("#,##0") + " form 3's found");
+            await Task.Delay(500);
             TryPrintStatus("Getting all form 4 filings...");
             EdgarFiling[] filings4 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "4", false);
             TryPrintStatus(filings4.Length.ToString("#,##0") + " form 4's found");
+            await Task.Delay(500);
             TryPrintStatus("Getting all form 5 filings...");
             EdgarFiling[] filings5 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "5", false);
             TryPrintStatus(filings5.Length.ToString("#,##0") + " form 5's found");
+            await Task.Delay(500);
 
             //Add to a basket
             List<EdgarFiling> AllFilings = new List<EdgarFiling>();
@@ -32,6 +35,7 @@ namespace TimHanewich.Reserch
             AllFilings.AddRange(filings4);
             AllFilings.AddRange(filings5);
             TryPrintStatus("Total of " + AllFilings.Count.ToString("#,##0") + " found!");
+            await Task.Delay(500);
 
             //Convert all of these
             int counter = 1;
@@ -42,6 +46,7 @@ namespace TimHanewich.Reserch
 
                 TryPrintStatus(prefix + "Getting filing details");
                 EdgarFilingDetails efd = await ef.GetFilingDetailsAsync();
+                await Task.Delay(100);
 
                 //Finding file
                 TryPrintStatus(prefix + "Finding data file.");
@@ -56,6 +61,7 @@ namespace TimHanewich.Reserch
                                 //Process the document
                                 TryPrintStatus(prefix + "Downloading and parsing data file.");
                                 StatementOfBeneficialOwnership thisform = await StatementOfBeneficialOwnership.ParseXmlFromWebUrlAsync(fd.Url);
+                                await Task.Delay(100);
                                 TryPrintStatus(prefix + thisform.NonDerivativeTransactions.Length.ToString("#,##0") + " transactions found.");
                                 ToReturn.AddRange(thisform.NonDerivativeTransactions);
                             }
