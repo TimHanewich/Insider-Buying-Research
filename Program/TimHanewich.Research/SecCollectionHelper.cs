@@ -188,6 +188,63 @@ namespace TimHanewich.Reserch
             }
         }
 
+        public async Task StoreSP500StatementOfOwnershipsInFolderAsync(string folder_path)
+        {
+            Console.WriteLine("Getting S&P500 list...");
+            string[] sp500 = await TimHanewich.Investing.InvestingToolkit.GetEquityGroupAsync(EquityGroup.SP500);
+            Console.WriteLine(sp500.Length.ToString() + " stocks found.");
+
+            foreach (string s in sp500)
+            {
+                ConsoleColor oc = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("[ " + s.ToString() + " ]");
+                Console.ForegroundColor = oc;
+
+                //Check if there is a file with this already
+                Console.WriteLine("Checking if should collect this one.");
+                bool ShouldCollect = true;
+                if (System.IO.File.Exists(folder_path + "\\" + s.ToUpper().Trim() + ".json"))
+                {
+                    Console.WriteLine("File already exists. Checking if it has content.");
+                    //Try to pick it up and see how many are in there
+                    StatementOfBeneficialOwnership[] forms = JsonConvert.DeserializeObject<StatementOfBeneficialOwnership[]>(System.IO.File.ReadAllText(folder_path + "\\" + s.ToUpper().Trim() + ".json"));
+                    if (forms.Length == 0)
+                    {
+                        Console.WriteLine("It does not have content. Collecting!");
+                        ShouldCollect = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("It does have " + forms.Length.ToString("#,##0") + " forms, skipping this one!");
+                        ShouldCollect = false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("File does not already exist. Will collect!");
+                }
+
+                if (ShouldCollect)
+                {
+                    try
+                    {
+                        Console.WriteLine("Collecting...");
+                        StatementOfBeneficialOwnership[] forms = await GetAllStatementOfBeneficialOwnershipsAsync(s, true);
+                        Console.WriteLine("Writing to file...");
+                        System.IO.File.WriteAllText(folder_path + "\\" + s + ".json", JsonConvert.SerializeObject(forms));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Fatal failre on stock " + s + ": " + ex.Message);
+                        Console.ForegroundColor = oc;
+                    }
+                }
+                            
+            }
+        }
+
         private void TryPrintStatus(string status)
         {
             if (PrintStatus)
