@@ -86,20 +86,47 @@ namespace TimHanewich.Reserch
                 Console.WriteLine("[ " + s.ToString() + " ]");
                 Console.ForegroundColor = oc;
 
-                try
+                //Check if there is a file with this already
+                Console.WriteLine("Checking if should collect this one.");
+                bool ShouldCollect = true;
+                if (System.IO.File.Exists(folder_path + "\\" + s.ToUpper().Trim() + ".json"))
                 {
-                    Console.WriteLine("Collecting...");
-                    NonDerivativeTransaction[] transactions = await GetAllNonDerivativeTransactionsAsync(s, true);
-                    Console.WriteLine("Writing to file...");
-                    System.IO.File.WriteAllText(folder_path + "\\" + s + ".json", JsonConvert.SerializeObject(transactions));
+                    Console.WriteLine("File already exists. Checking if it has content.");
+                    //Try to pick it up and see how many are in there
+                    NonDerivativeTransaction[] transactions = JsonConvert.DeserializeObject<NonDerivativeTransaction[]>(System.IO.File.ReadAllText(folder_path + "\\" + s.ToUpper().Trim() + ".json"));
+                    if (transactions.Length == 0)
+                    {
+                        Console.WriteLine("It does not have content. Collecting!");
+                        ShouldCollect = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("It does have content, skipping this one!");
+                        ShouldCollect = false;
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Fatal failre on stock " + s + ": " + ex.Message);
-                    Console.ForegroundColor = oc;
+                    Console.WriteLine("File does not already exist. Will collect!");
                 }
-                
+
+                if (ShouldCollect)
+                {
+                    try
+                    {
+                        Console.WriteLine("Collecting...");
+                        NonDerivativeTransaction[] transactions = await GetAllNonDerivativeTransactionsAsync(s, true);
+                        Console.WriteLine("Writing to file...");
+                        System.IO.File.WriteAllText(folder_path + "\\" + s + ".json", JsonConvert.SerializeObject(transactions));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Fatal failre on stock " + s + ": " + ex.Message);
+                        Console.ForegroundColor = oc;
+                    }
+                }
+                            
             }
         }
 
