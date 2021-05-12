@@ -2,6 +2,7 @@
 using SecuritiesExchangeCommission.Edgar;
 using Aletheia.Engine;
 using TimHanewich.Reserch;
+using TimHanewich.Reserch.Trailing;
 
 namespace Insider_Buying_Research
 {
@@ -10,7 +11,7 @@ namespace Insider_Buying_Research
         static void Main(string[] args)
         {
             SecCollectionHelper colhelp = new SecCollectionHelper();
-            colhelp.StoreSP500NonDerivateTransactionsInFolderAsync(@"C:\Users\tahan\Downloads\Sp500Transactions").Wait();
+            colhelp.StoreSP500NonDerivateTransactionsInFolderAsync(args[0]).Wait();
         }
     }
 }
