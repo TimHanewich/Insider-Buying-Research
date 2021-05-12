@@ -80,16 +80,20 @@ namespace TimHanewich.Reserch
 
             TryPrintStatus("Getting all form 3 filings...");
             EdgarFiling[] filings3 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "3", false);
+            TryPrintStatus(filings3.Length.ToString("#,##0") + " form 3's found");
             TryPrintStatus("Getting all form 4 filings...");
             EdgarFiling[] filings4 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "4", false);
+            TryPrintStatus(filings4.Length.ToString("#,##0") + " form 4's found");
             TryPrintStatus("Getting all form 5 filings...");
             EdgarFiling[] filings5 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "5", false);
+            TryPrintStatus(filings5.Length.ToString("#,##0") + " form 5's found");
 
             //Add to a basket
             List<EdgarFiling> AllFilings = new List<EdgarFiling>();
             AllFilings.AddRange(filings3);
             AllFilings.AddRange(filings4);
             AllFilings.AddRange(filings5);
+            TryPrintStatus("Total of " + AllFilings.Count.ToString("#,##0") + " found!");
 
             //Convert all of these
             int counter = 1;
