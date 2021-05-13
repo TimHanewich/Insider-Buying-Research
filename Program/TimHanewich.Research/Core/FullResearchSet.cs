@@ -40,16 +40,16 @@ namespace TimHanewich.Reserch.Core
             PrintStatus(sorted.Length.ToString() + " sorted!");
             
             //Filter to just the particular date range
-            //2011 - 2020, including 2011. So 10 years: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
+            //2010 - 2019, including 2019. So 10 years: 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
             PrintStatus("Filtering to only in range.");
             List<NonDerivativeTransaction> InDateRange = new List<NonDerivativeTransaction>();
             foreach (NonDerivativeTransaction ndt in sorted)
             {
                 if (ndt.TransactionDate.HasValue)
                 {
-                    if (ndt.TransactionDate.Value >= new DateTime(2011, 1, 1)) //Older than (or equal to) 2011
+                    if (ndt.TransactionDate.Value >= new DateTime(2010, 1, 1)) //Older than (or equal to) 2010
                     {
-                        if (ndt.TransactionDate.Value < new DateTime(2021, 1, 1)) //Before 2021
+                        if (ndt.TransactionDate.Value < new DateTime(2020, 1, 1)) //Before 2020 (2019 or earlier)
                         {
                             InDateRange.Add(ndt);
                         }
@@ -73,7 +73,7 @@ namespace TimHanewich.Reserch.Core
             PrintStatus("Getting average stock performance for this period.");
             try
             {
-                await sps_avg.CalculateAverageReturnsAsync(Symbol, new DateTime(2011, 1, 1), new DateTime(2020, 12, 31));
+                await sps_avg.CalculateAverageReturnsAsync(Symbol, new DateTime(2010, 1, 1), new DateTime(2019, 12, 31));
             }
             catch (Exception ex)
             {
