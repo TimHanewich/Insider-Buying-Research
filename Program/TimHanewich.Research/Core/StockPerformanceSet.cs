@@ -6,6 +6,12 @@ namespace TimHanewich.Reserch.Core
 {
     public class StockPerformanceSet
     {
+        //Time frame context
+        public bool IsAverage {get; set;} //If this is an average that has been extrapolated to smaller time frames from a larger (longer term) time frame, this will be true. If this is directly measured after an insider purchase, this value will be false.
+        public DateTime Beginning {get; set;}
+        public DateTime End {get; set;}
+
+        //Day count returns
         public float Return14 {get; set;}
         public float Return30 {get; set;}
         public float Return90 {get; set;}
@@ -14,6 +20,11 @@ namespace TimHanewich.Reserch.Core
 
         public async Task CalculateReturnsAsync(string stock, DateTime from)
         {
+            //Set context
+            IsAverage = false;
+            Beginning = from;
+            End = from.AddYears(1);
+
             StockPerformanceCalculator calc = new StockPerformanceCalculator();
             Return14 = await calc.CalculateStockPerformanceAsync(stock, from, from.AddDays(14));
             await Task.Delay(500);
@@ -28,6 +39,11 @@ namespace TimHanewich.Reserch.Core
 
         public async Task CalculateAverageReturnsAsync(string stock, DateTime beginning, DateTime end)
         {
+            //Set context
+            IsAverage = true;
+            Beginning = beginning;
+            End = end;
+
             //Get the performance since that time
             StockPerformanceCalculator calc = new StockPerformanceCalculator();
             float FullReturn = await calc.CalculateStockPerformanceAsync(stock, beginning, end);
