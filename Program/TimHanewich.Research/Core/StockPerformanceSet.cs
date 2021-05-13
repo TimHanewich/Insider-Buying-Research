@@ -25,5 +25,21 @@ namespace TimHanewich.Reserch.Core
             await Task.Delay(500);
             Return360 = await calc.CalculateStockPerformanceAsync(stock, from, from.AddDays(360));
         }
+
+        public async Task CalculateAverageReturnsAsync(string stock, DateTime beginning, DateTime end)
+        {
+            //Get the performance since that time
+            StockPerformanceCalculator calc = new StockPerformanceCalculator();
+            float FullReturn = await calc.CalculateStockPerformanceAsync(stock, beginning, end);
+            TimeSpan ts = end - beginning;
+            float days = Convert.ToSingle(ts.Days);
+
+            //Percent
+            Return14 = Convert.ToSingle(Math.Pow(1f + FullReturn, Convert.ToSingle(14) / days) - 1);
+            Return30 = Convert.ToSingle(Math.Pow(1f + FullReturn, Convert.ToSingle(30) / days) - 1);
+            Return90 = Convert.ToSingle(Math.Pow(1f + FullReturn, Convert.ToSingle(90) / days) - 1);
+            Return180 = Convert.ToSingle(Math.Pow(1f + FullReturn, Convert.ToSingle(180) / days) - 1);
+            Return360 = Convert.ToSingle(Math.Pow(1f + FullReturn, Convert.ToSingle(360) / days) - 1);
+        }
     }
 }
