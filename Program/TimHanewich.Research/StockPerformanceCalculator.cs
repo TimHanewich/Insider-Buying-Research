@@ -18,7 +18,7 @@ namespace TimHanewich.Reserch
         private async Task<float> StockPriceClosestToDateAsync(string symbol, DateTime target)
         {
             HistoricalDataProvider hdp = new HistoricalDataProvider();
-            await hdp.DownloadHistoricalDataAsync(symbol, target.AddDays(-3), target.AddDays(3));
+            await hdp.DownloadHistoricalDataAsync(symbol, target.AddDays(-5), target.AddDays(5));
 
             //Check
             if (hdp.HistoricalData.Length == 0)
