@@ -3,6 +3,8 @@ using SecuritiesExchangeCommission.Edgar;
 using Aletheia.Engine;
 using TimHanewich.Reserch;
 using TimHanewich.Reserch.Trailing;
+using TimHanewich.Reserch.Core;
+using Newtonsoft.Json;
 
 namespace Insider_Buying_Research
 {
@@ -10,8 +12,43 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            SecCollectionHelper colhelp = new SecCollectionHelper();
-            colhelp.StoreSP500NonDerivateTransactionsInFolderAsync(args[0]).Wait();
+            PerformFulAnalysis(@"C:\Users\tahan\Downloads\Sp500NonDerivativeTransactions\Sp500NonDerivativeTransactions", @"C:\Users\tahan\Downloads\FullAnalyses");
+        }
+
+        public static void PerformFulAnalysis(string non_derivative_transactions_folder, string place_analyses_in)
+        {
+            string[] files = System.IO.Directory.GetFiles(non_derivative_transactions_folder);
+            foreach (string s in files)
+            {
+                string file_name = System.IO.Path.GetFileName(s);
+                AdminPrint("Checking " + file_name + "...");
+                if (System.IO.File.Exists(place_analyses_in + "\\" + file_name) == false)
+                {
+                    AdminPrint("This has not been research yet. Going!");
+
+                    //Reseaerch
+                    FullResearchSet frs = new FullResearchSet();
+                    frs.PrintStatusChanges = true;
+                    frs.GenerateFromTransactionsFileAsync(s).Wait();
+
+                    //Write it
+                    AdminPrint("Writing to file...");
+                    System.IO.File.WriteAllText(place_analyses_in + "\\" + file_name, JsonConvert.SerializeObject(frs));
+                    AdminPrint("Successfully written!");
+                }
+                else
+                {
+                    AdminPrint("This has already been researched. skipping.");
+                }
+            }
+        }
+    
+        private static void AdminPrint(string msg, ConsoleColor cc = ConsoleColor.Blue)
+        {
+            ConsoleColor oc = Console.ForegroundColor;
+            Console.ForegroundColor = cc;
+            Console.WriteLine(msg);
+            Console.ForegroundColor = oc;
         }
     }
 }
