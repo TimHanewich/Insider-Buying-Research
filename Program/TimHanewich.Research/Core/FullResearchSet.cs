@@ -93,6 +93,10 @@ namespace TimHanewich.Reserch.Core
                 ta_PerformancesFollowingInsiderBuys.Add(sps);
             }
 
+            //Add them
+            AnalyzedTransactions = ta_AnalyzedTransactions.ToArray();
+            PerformancesFollowingInsiderBuys = ta_PerformancesFollowingInsiderBuys.ToArray();
+
             PrintStatus("Generation complete!");
         }
 
