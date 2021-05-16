@@ -9,7 +9,7 @@ namespace TimHanewich.Reserch.Core
     public class FullResearchSet
     {
         //Settings
-        public bool PrintStatusChanges;
+        private bool PrintStatusChanges;
 
         public string Symbol {get; set;}
         public NonDerivativeTransaction[] AnalyzedTransactions {get; set;}
@@ -109,6 +109,16 @@ namespace TimHanewich.Reserch.Core
             {
                 Console.WriteLine(s);
             }
+        }
+    
+        public void StatusPrintingOn()
+        {
+            PrintStatusChanges = true;
+        }
+
+        public void StatusPrintingOff()
+        {
+            PrintStatusChanges = false;
         }
     }
 }
