@@ -20,6 +20,7 @@ namespace Insider_Buying_Research
             //Clean paths
             path1 = path1.Replace("\"", "");
             path2 = path2.Replace("\"", "");
+            
             PerformFulAnalysis(path1, path2);
         }
 
