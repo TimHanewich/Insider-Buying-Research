@@ -18,12 +18,12 @@ namespace TimHanewich.Reserch
         private async Task<float> StockPriceClosestToDateAsync(string symbol, DateTime target)
         {
             HistoricalDataProvider hdp = new HistoricalDataProvider();
-            await hdp.DownloadHistoricalDataAsync(symbol, target.AddDays(-5), target.AddDays(5));
+            await hdp.DownloadHistoricalDataAsync(symbol, target.AddDays(-5), target.AddDays(5), 20);
 
-            //Check
-            if (hdp.HistoricalData.Length == 0)
+            //Throw an error if not successful
+            if (hdp.DownloadResult != HistoricalDataDownloadResult.Successful)
             {
-                throw new Exception("Unable to access historical stock data around date " + target.ToShortDateString());
+                throw new Exception("Unable to download historical data for '" + symbol.ToUpper().Trim() + "'. Status: " + hdp.DownloadResult.ToString());
             }
 
             //Find the closest
