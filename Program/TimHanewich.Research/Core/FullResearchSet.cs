@@ -68,8 +68,8 @@ namespace TimHanewich.Reserch.Core
                 return;
             }
 
-            //We now have all transactions that we will analyze, save these
-            AnalyzedTransactions = InDateRange.ToArray();
+            //Now that we have all of the non derivative transactions that we are going to do (filtered heavily), add them to the focus
+            ta_AnalyzedTransactions.AddRange(InDateRange);
 
             //Get the average performance
             StockPerformanceSet sps_avg = new StockPerformanceSet();
@@ -87,7 +87,7 @@ namespace TimHanewich.Reserch.Core
 
             //Get the performances after each buy
             PrintStatus("Starting the performance calculation following each insider buy...");
-            foreach (NonDerivativeTransaction ndt in InDateRange)
+            foreach (NonDerivativeTransaction ndt in ta_AnalyzedTransactions)
             {
                 StockPerformanceSet sps = new StockPerformanceSet();
                 PrintStatus("Calculating performance since buy on " + ndt.TransactionDate.Value.ToShortDateString() + "...");
