@@ -27,14 +27,26 @@ namespace Insider_Buying_Research
                     AdminPrint("This has not been research yet. Going!");
 
                     //Reseaerch
+                    bool ResearchFailed = false;
                     FullResearchSet frs = new FullResearchSet();
                     frs.PrintStatusChanges = true;
-                    frs.GenerateFromTransactionsFileAsync(s).Wait();
-
+                    try
+                    {
+                        frs.GenerateFromTransactionsFileAsync(s).Wait();
+                    }
+                    catch (Exception ex)
+                    {
+                        AdminPrint("Generation for " + file_name + " failed. Msg: " + ex.Message, ConsoleColor.Red);
+                        ResearchFailed = true;
+                    }
+                    
                     //Write it
-                    AdminPrint("Writing to file...");
-                    System.IO.File.WriteAllText(place_analyses_in + "\\" + file_name, JsonConvert.SerializeObject(frs));
-                    AdminPrint("Successfully written!");
+                    if (ResearchFailed == false)
+                    {
+                        AdminPrint("Writing to file...");
+                        System.IO.File.WriteAllText(place_analyses_in + "\\" + file_name, JsonConvert.SerializeObject(frs));
+                        AdminPrint("Successfully written!");
+                    }  
                 }
                 else
                 {
