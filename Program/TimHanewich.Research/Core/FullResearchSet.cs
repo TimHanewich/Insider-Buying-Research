@@ -68,6 +68,9 @@ namespace TimHanewich.Reserch.Core
                 return;
             }
 
+            //We now have all transactions that we will analyze, save these
+            AnalyzedTransactions = InDateRange.ToArray();
+
             //Get the average performance
             StockPerformanceSet sps_avg = new StockPerformanceSet();
             PrintStatus("Getting average stock performance for this period.");
