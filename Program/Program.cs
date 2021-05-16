@@ -12,7 +12,11 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            PerformFulAnalysis(@"C:\Users\tahan\Downloads\Sp500NonDerivativeTransactions\Sp500NonDerivativeTransactions", @"C:\Users\tahan\Downloads\FullAnalyses");
+            Console.Write("Path of folder containing S&P500 equity transactions: ");
+            string path1 = Console.ReadLine();
+            Console.Write("Path of full analysis export: ");
+            string path2 = Console.ReadLine();
+            PerformFulAnalysis(path1, path2);
         }
 
         public static void PerformFulAnalysis(string non_derivative_transactions_folder, string place_analyses_in)
