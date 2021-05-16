@@ -29,7 +29,7 @@ namespace Insider_Buying_Research
                     //Reseaerch
                     bool ResearchFailed = false;
                     FullResearchSet frs = new FullResearchSet();
-                    frs.PrintStatusChanges = true;
+                    frs.StatusPrintingOn();
                     try
                     {
                         frs.GenerateFromTransactionsFileAsync(s).Wait();
