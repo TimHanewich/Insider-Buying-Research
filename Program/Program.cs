@@ -49,13 +49,24 @@ namespace Insider_Buying_Research
                         ResearchFailed = true;
                     }
                     
-                    //Write it
-                    if (ResearchFailed == false)
+                    //Write it (if it has analyses)
+                    if (frs.PerformancesFollowingInsiderBuys != null)
                     {
-                        AdminPrint("Writing to file...");
-                        System.IO.File.WriteAllText(place_analyses_in + "\\" + file_name, JsonConvert.SerializeObject(frs));
-                        AdminPrint("Successfully written!");
-                    }  
+                        if (frs.PerformancesFollowingInsiderBuys.Length > 0)
+                        {
+                            if (ResearchFailed == false)
+                            {
+                                AdminPrint("Writing to file...");
+                                System.IO.File.WriteAllText(place_analyses_in + "\\" + file_name, JsonConvert.SerializeObject(frs));
+                                AdminPrint("Successfully written!");
+                            }  
+                        }
+                        else
+                        {
+                            AdminPrint("Not going to write this one to file... It had no performance analyses following transctions!", ConsoleColor.Yellow);
+                        }
+                    }
+                    
                 }
                 else
                 {
