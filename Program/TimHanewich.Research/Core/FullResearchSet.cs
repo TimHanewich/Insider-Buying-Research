@@ -91,9 +91,16 @@ namespace TimHanewich.Reserch.Core
             {
                 StockPerformanceSet sps = new StockPerformanceSet();
                 PrintStatus("Calculating performance since buy on " + ndt.TransactionDate.Value.ToShortDateString() + "...");
-                await sps.CalculateReturnsAsync(Symbol, ndt.TransactionDate.Value);
-                Console.WriteLine("Performance calculated!");
-                ta_PerformancesFollowingInsiderBuys.Add(sps);
+                try
+                {
+                    await sps.CalculateReturnsAsync(Symbol, ndt.TransactionDate.Value);
+                    Console.WriteLine("Performance calculated!");
+                    ta_PerformancesFollowingInsiderBuys.Add(sps);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Failure while processing performance since buy on " + ndt.TransactionDate.Value.ToShortDateString() + ": " + ex.Message);
+                }
             }
 
             //Add them
