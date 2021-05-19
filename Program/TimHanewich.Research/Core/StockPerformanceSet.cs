@@ -1,6 +1,8 @@
 using System;
 using TimHanewich.Reserch;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TimHanewich.Reserch.Core
 {
@@ -53,6 +55,34 @@ namespace TimHanewich.Reserch.Core
             Return90 = Convert.ToSingle(Math.Pow(1f + FullReturn, Convert.ToSingle(90) / days) - 1);
             Return180 = Convert.ToSingle(Math.Pow(1f + FullReturn, Convert.ToSingle(180) / days) - 1);
             Return360 = Convert.ToSingle(Math.Pow(1f + FullReturn, Convert.ToSingle(360) / days) - 1);
+        }
+    
+        public static StockPerformanceSet Average(StockPerformanceSet[] performances)
+        {
+            StockPerformanceSet ToReturn = new StockPerformanceSet();
+
+            List<float> R14 = new List<float>();
+            List<float> R30 = new List<float>();
+            List<float> R90 = new List<float>();
+            List<float> R180 = new List<float>();
+            List<float> R360 = new List<float>();
+
+            foreach (StockPerformanceSet sps in performances)
+            {
+                R14.Add(sps.Return14);
+                R30.Add(sps.Return14);
+                R90.Add(sps.Return14);
+                R180.Add(sps.Return14);
+                R360.Add(sps.Return14);
+            }
+
+            ToReturn.Return14 = R14.Average();
+            ToReturn.Return30 = R30.Average();
+            ToReturn.Return90 = R90.Average();
+            ToReturn.Return180 = R180.Average();
+            ToReturn.Return360 = R360.Average();
+
+            return ToReturn;
         }
     }
 }
