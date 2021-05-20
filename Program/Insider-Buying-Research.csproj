@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aletheia" Version="3.3.1" />
+    <PackageReference Include="SecuritiesExchangeCommission.Edgar" Version="6.2.2" />
     <PackageReference Include="TimHanewich.Investing" Version="4.0.1" />
     <PackageReference Include="Yahoo.Finance" Version="4.1.0" />
   </ItemGroup>
