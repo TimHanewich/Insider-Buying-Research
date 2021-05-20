@@ -70,10 +70,10 @@ namespace TimHanewich.Reserch.Core
             foreach (StockPerformanceSet sps in performances)
             {
                 R14.Add(sps.Return14);
-                R30.Add(sps.Return14);
-                R90.Add(sps.Return14);
-                R180.Add(sps.Return14);
-                R360.Add(sps.Return14);
+                R30.Add(sps.Return30);
+                R90.Add(sps.Return90);
+                R180.Add(sps.Return180);
+                R360.Add(sps.Return360);
             }
 
             ToReturn.Return14 = R14.Average();
