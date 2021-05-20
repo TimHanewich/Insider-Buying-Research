@@ -133,33 +133,28 @@ namespace TimHanewich.Reserch
 
                 if (ShouldCollect)
                 {
-                    await TryRetrieveAndStoreNonDerivativeTransactionsAsync(s, folder_path);
+                    try
+                    {
+                        Console.WriteLine("Collecting...");
+                        NonDerivativeTransaction[] transactions = await GetAllNonDerivativeTransactionsAsync(s, true);
+                        Console.WriteLine(transactions.Length.ToString() + " transactions found.");
+                        if (transactions.Length > 0)
+                        {
+                            Console.WriteLine("Writing to file...");
+                            System.IO.File.WriteAllText(folder_path + "\\" + s + ".json", JsonConvert.SerializeObject(transactions));
+                        }
+                        else
+                        {
+                            Console.WriteLine("0 transactions found so will not write to file.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Fatal failre on stock " + s + ": " + ex.Message);
+                    }
                 }
 
                 Console.ForegroundColor = oc;                            
-            }
-        }
-
-        public async Task TryRetrieveAndStoreNonDerivativeTransactionsAsync(string stock, string folder_path)
-        {
-            try
-            {
-                Console.WriteLine("Collecting...");
-                NonDerivativeTransaction[] transactions = await GetAllNonDerivativeTransactionsAsync(stock, true);
-                Console.WriteLine(transactions.Length.ToString() + " transactions found.");
-                if (transactions.Length > 0)
-                {
-                    Console.WriteLine("Writing to file...");
-                    System.IO.File.WriteAllText(folder_path + "\\" + stock + ".json", JsonConvert.SerializeObject(transactions));
-                }
-                else
-                {
-                    Console.WriteLine("0 transactions found so will not write to file.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Fatal failre on stock " + stock + ": " + ex.Message);
             }
         }
 
