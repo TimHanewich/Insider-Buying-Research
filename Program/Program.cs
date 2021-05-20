@@ -18,7 +18,7 @@ namespace Insider_Buying_Research
 
         
         //Step 1
-        public static void PerformFulAnalysis()
+        public static void PerformFullAnalysis()
         {
             Console.Write("Path of folder containing S&P500 equity transactions (or single file): ");
             string path1 = Console.ReadLine();
