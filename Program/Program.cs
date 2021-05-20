@@ -6,6 +6,7 @@ using TimHanewich.Reserch.Trailing;
 using TimHanewich.Reserch.Core;
 using Newtonsoft.Json;
 using TimHanewich.Csv;
+using System.Collections.Generic;
 
 namespace Insider_Buying_Research
 {
@@ -13,7 +14,7 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            
+            PerformFullAnalysis();
         }
 
         
@@ -96,6 +97,7 @@ namespace Insider_Buying_Research
             string path = Console.ReadLine();
             path = path.Replace("\"", "");
             string[] files = System.IO.Directory.GetFiles(path);
+            List<string> BlankFiles = new List<string>();
             foreach (string s in files)
             {
                 FullResearchSet frs = JsonConvert.DeserializeObject<FullResearchSet>(System.IO.File.ReadAllText(s));
@@ -114,8 +116,23 @@ namespace Insider_Buying_Research
                 }
                 if (flagthis)
                 {
-                    Console.WriteLine(frs.Symbol);
+                    Console.WriteLine(s);
+                    BlankFiles.Add(s);
                 }
+            }
+            AdminPrint("Delete the ones that did not contain useful data? 'yes' to confirm", ConsoleColor.Yellow);
+            string ip = Console.ReadLine();
+            if (ip == "yes")
+            {
+                foreach (string s in BlankFiles)
+                {
+                    AdminPrint("Deleting " + s + "...", ConsoleColor.Red);
+                    System.IO.File.Delete(s);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Will not delete.");
             }
         }
 
