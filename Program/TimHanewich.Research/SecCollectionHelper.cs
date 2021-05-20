@@ -52,28 +52,34 @@ namespace TimHanewich.Reserch
                 TryPrintStatus(prefix + "Finding data file.");
                 foreach (FilingDocument fd in efd.DocumentFormatFiles)
                 {
-                    if (fd.DocumentType == "4")
+                    if (fd.DocumentType != null)
                     {
-                        if (fd.DocumentName.ToLower().Contains(".xml"))
+                        if (fd.DocumentType == "4")
                         {
-                            try
+                            if (fd.DocumentName != null)
                             {
-                                //Process the document
-                                TryPrintStatus(prefix + "Downloading and parsing data file.");
-                                StatementOfBeneficialOwnership thisform = await StatementOfBeneficialOwnership.ParseXmlFromWebUrlAsync(fd.Url);
-                                await Task.Delay(100);
-                                TryPrintStatus(prefix + thisform.NonDerivativeTransactions.Length.ToString("#,##0") + " transactions found.");
-                                ToReturn.AddRange(thisform.NonDerivativeTransactions);
-                            }
-                            catch
-                            {
-                                TryPrintStatus(prefix + "FAILURE! Moving on......");
-                            }
-                            
+                                if (fd.DocumentName.ToLower().Contains(".xml"))
+                                {
+                                    try
+                                    {
+                                        //Process the document
+                                        TryPrintStatus(prefix + "Downloading and parsing data file.");
+                                        StatementOfBeneficialOwnership thisform = await StatementOfBeneficialOwnership.ParseXmlFromWebUrlAsync(fd.Url);
+                                        await Task.Delay(100);
+                                        TryPrintStatus(prefix + thisform.NonDerivativeTransactions.Length.ToString("#,##0") + " transactions found.");
+                                        ToReturn.AddRange(thisform.NonDerivativeTransactions);
+                                    }
+                                    catch
+                                    {
+                                        TryPrintStatus(prefix + "FAILURE! Moving on......");
+                                    }
+                                    
 
 
+                                }
+                            }
                         }
-                    }
+                    } 
                 }
                 
                 counter = counter + 1;
