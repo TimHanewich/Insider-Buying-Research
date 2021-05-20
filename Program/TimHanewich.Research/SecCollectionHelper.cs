@@ -42,45 +42,53 @@ namespace TimHanewich.Reserch
             foreach (EdgarFiling ef in AllFilings)
             {
                 string prefix = "# " + counter.ToString("#,##0") + " / " + AllFilings.Count.ToString("#,##0") + ": ";
-                TryPrintStatus("Starting collection process for filing # " + counter.ToString("#,##0") + " / " + AllFilings.Count.ToString("#,##0") + "(" + ef.DocumentsUrl + ")");
+                TryPrintStatus("Starting collection process for filing # " + counter.ToString("#,##0") + " / " + AllFilings.Count.ToString("#,##0") + " (" + ef.DocumentsUrl + ")");
 
                 TryPrintStatus(prefix + "Getting filing details");
                 EdgarFilingDetails efd = await ef.GetFilingDetailsAsync();
                 await Task.Delay(100);
 
                 //Finding file
-                TryPrintStatus(prefix + "Finding data file.");
-                foreach (FilingDocument fd in efd.DocumentFormatFiles)
+                if (efd.DocumentFormatFiles != null)
                 {
-                    if (fd.DocumentType != null)
+                    TryPrintStatus(prefix + "Finding data file.");
+                    foreach (FilingDocument fd in efd.DocumentFormatFiles)
                     {
-                        if (fd.DocumentType == "4")
+                        if (fd.DocumentType != null)
                         {
-                            if (fd.DocumentName != null)
+                            if (fd.DocumentType == "4")
                             {
-                                if (fd.DocumentName.ToLower().Contains(".xml"))
+                                if (fd.DocumentName != null)
                                 {
-                                    try
+                                    if (fd.DocumentName.ToLower().Contains(".xml"))
                                     {
-                                        //Process the document
-                                        TryPrintStatus(prefix + "Downloading and parsing data file.");
-                                        StatementOfBeneficialOwnership thisform = await StatementOfBeneficialOwnership.ParseXmlFromWebUrlAsync(fd.Url);
-                                        await Task.Delay(100);
-                                        TryPrintStatus(prefix + thisform.NonDerivativeTransactions.Length.ToString("#,##0") + " transactions found.");
-                                        ToReturn.AddRange(thisform.NonDerivativeTransactions);
-                                    }
-                                    catch
-                                    {
-                                        TryPrintStatus(prefix + "FAILURE! Moving on......");
-                                    }
-                                    
+                                        try
+                                        {
+                                            //Process the document
+                                            TryPrintStatus(prefix + "Downloading and parsing data file.");
+                                            StatementOfBeneficialOwnership thisform = await StatementOfBeneficialOwnership.ParseXmlFromWebUrlAsync(fd.Url);
+                                            await Task.Delay(100);
+                                            TryPrintStatus(prefix + thisform.NonDerivativeTransactions.Length.ToString("#,##0") + " transactions found.");
+                                            ToReturn.AddRange(thisform.NonDerivativeTransactions);
+                                        }
+                                        catch
+                                        {
+                                            TryPrintStatus(prefix + "FAILURE! Moving on......");
+                                        }
+                                        
 
 
+                                    }
                                 }
                             }
-                        }
-                    } 
+                        } 
+                    }
                 }
+                else
+                {
+                    TryPrintStatus("There were not any document format files in this filing. Moving on.");
+                }
+                
                 
                 counter = counter + 1;
             }
