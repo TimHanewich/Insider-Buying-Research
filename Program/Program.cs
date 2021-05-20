@@ -15,9 +15,58 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            AssembleResultsCsv();
+            CountAllTransactions();
         }
 
+        #region "Utility/research"
+
+        public static void CountAllTransactions()
+        {
+            Console.Write("Folder with transactions: ");
+            string folder = Console.ReadLine().Replace("\"", "");
+
+            Console.Write("Output CSV to what folder?");
+            string outputto = Console.ReadLine().Replace("\"", "");
+
+            CsvFile csv = new CsvFile();
+            
+
+            string[] files = System.IO.Directory.GetFiles(folder);
+            foreach (string s in files)
+            {
+                NonDerivativeTransaction[] transactions = JsonConvert.DeserializeObject<NonDerivativeTransaction[]>(System.IO.File.ReadAllText(s));
+                
+                //Count those between 2010 and 2019
+                int counted = 0;
+                foreach (NonDerivativeTransaction ndt in transactions)
+                {
+                    if (ndt.TransactionDate.HasValue)
+                    {
+                        if (ndt.TransactionDate.Value >= new DateTime(2010, 1, 1)) //Older than (or equal to) 2010
+                        {
+                            if (ndt.TransactionDate.Value < new DateTime(2020, 1, 1)) //Before 2020 (2019 or earlier)
+                            {
+                                counted = counted + 1;
+                            }
+                        }
+                    }
+                }
+
+                DataRow dr = csv.AddNewRow();
+                dr.Values.Add(System.IO.Path.GetFileName(s));
+                dr.Values.Add(counted.ToString());
+                Console.WriteLine(System.IO.Path.GetFileName(s) + "-" + counted.ToString());
+            }
+
+            Stream ss = System.IO.File.Create(outputto + "\\output.csv");
+            StreamWriter sw = new StreamWriter(ss);
+            sw.Write(csv.GenerateAsCsvFileContent());
+            sw.Close();
+            ss.Close();
+            Console.WriteLine("Written!");
+        }
+
+        #endregion
         
         //Step 1: Analyze stock performance
         public static void PerformFullAnalysis()
