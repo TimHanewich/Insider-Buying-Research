@@ -56,7 +56,7 @@ namespace TimHanewich.Reserch
                     {
                         if (fd.DocumentType != null)
                         {
-                            if (fd.DocumentType == "4")
+                            if (fd.DocumentType == "4" || fd.DocumentType == "3" || fd.DocumentType == "5")
                             {
                                 if (fd.DocumentName != null)
                                 {
