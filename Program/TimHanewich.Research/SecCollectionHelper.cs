@@ -42,7 +42,7 @@ namespace TimHanewich.Reserch
             foreach (EdgarFiling ef in AllFilings)
             {
                 string prefix = "# " + counter.ToString("#,##0") + " / " + AllFilings.Count.ToString("#,##0") + ": ";
-                TryPrintStatus("Starting collection process for filing # " + counter.ToString("#,##0") + " / " + AllFilings.Count.ToString("#,##0"));
+                TryPrintStatus("Starting collection process for filing # " + counter.ToString("#,##0") + " / " + AllFilings.Count.ToString("#,##0") + "(" + ef.DocumentsUrl + ")");
 
                 TryPrintStatus(prefix + "Getting filing details");
                 EdgarFilingDetails efd = await ef.GetFilingDetailsAsync();
