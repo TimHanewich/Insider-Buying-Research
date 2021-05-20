@@ -7,6 +7,7 @@ using TimHanewich.Reserch.Core;
 using Newtonsoft.Json;
 using TimHanewich.Csv;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Insider_Buying_Research
 {
@@ -14,7 +15,7 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            PerformFullAnalysis();
+            AssembleResultsCsv();
         }
 
         
@@ -197,8 +198,10 @@ namespace Insider_Buying_Research
             //Write to the file
             AdminPrint("Writing to file...");
             string path = output_folder + "\\InsiderBuyPerformance.csv";
-            System.IO.File.Create(path);
-            System.IO.File.WriteAllText(path, csv.GenerateAsCsvFileContent());
+            FileStream fs = System.IO.File.Create(path);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write(csv.GenerateAsCsvFileContent());
+            fs.Close();
             AdminPrint("Successfully wrote to " + path, ConsoleColor.Green);
         }
 
