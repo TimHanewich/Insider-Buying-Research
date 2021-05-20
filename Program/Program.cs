@@ -13,19 +13,28 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            CheckData();
+            
         }
 
         
         //Step 1
-        public static void PerformFulAnalysis(string non_derivative_transactions_folder, string place_analyses_in)
+        public static void PerformFulAnalysis()
         {
-            string[] files = System.IO.Directory.GetFiles(non_derivative_transactions_folder);
+            Console.Write("Path of folder containing S&P500 equity transactions: ");
+            string path1 = Console.ReadLine();
+            Console.Write("Path of full analysis export: ");
+            string path2 = Console.ReadLine();
+
+            //Clean paths
+            path1 = path1.Replace("\"", "");
+            path2 = path2.Replace("\"", "");
+
+            string[] files = System.IO.Directory.GetFiles(path1);
             foreach (string s in files)
             {
                 string file_name = System.IO.Path.GetFileName(s);
                 AdminPrint("Checking " + file_name + "...");
-                if (System.IO.File.Exists(place_analyses_in + "\\" + file_name) == false)
+                if (System.IO.File.Exists(path2 + "\\" + file_name) == false)
                 {
                     AdminPrint("This has not been research yet. Going!");
 
@@ -51,7 +60,7 @@ namespace Insider_Buying_Research
                             if (ResearchFailed == false)
                             {
                                 AdminPrint("Writing to file...");
-                                System.IO.File.WriteAllText(place_analyses_in + "\\" + file_name, JsonConvert.SerializeObject(frs));
+                                System.IO.File.WriteAllText(path2 + "\\" + file_name, JsonConvert.SerializeObject(frs));
                                 AdminPrint("Successfully written!");
                             }  
                         }
