@@ -75,9 +75,6 @@ namespace TimHanewich.Reserch
                                         {
                                             TryPrintStatus(prefix + "FAILURE! Moving on......");
                                         }
-                                        
-
-
                                     }
                                 }
                             }
