@@ -20,7 +20,7 @@ namespace Insider_Buying_Research
         //Step 1
         public static void PerformFulAnalysis()
         {
-            Console.Write("Path of folder containing S&P500 equity transactions: ");
+            Console.Write("Path of folder containing S&P500 equity transactions (or single file): ");
             string path1 = Console.ReadLine();
             Console.Write("Path of full analysis export: ");
             string path2 = Console.ReadLine();
@@ -29,7 +29,18 @@ namespace Insider_Buying_Research
             path1 = path1.Replace("\"", "");
             path2 = path2.Replace("\"", "");
 
-            string[] files = System.IO.Directory.GetFiles(path1);
+            //Get the files
+            string[] files = null;
+            if (System.IO.Directory.Exists(path1))
+            {
+                files = System.IO.Directory.GetFiles(path1);
+            }
+            else if (System.IO.File.Exists(path1))
+            {
+                files = new string[] {path1};
+            }
+            
+            //Process each
             foreach (string s in files)
             {
                 string file_name = System.IO.Path.GetFileName(s);
