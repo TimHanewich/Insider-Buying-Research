@@ -13,10 +13,10 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Folder with the full analyses >");
+            Console.Write("Folder with the full analyses >");
             string analysis_folder = Console.ReadLine().Replace("\"", "");
 
-            Console.WriteLine("Output CSV file to folder:");
+            Console.Write("Output CSV file to folder:");
             string output_folder = Console.ReadLine().Replace("\"", "");
 
             string[] files = System.IO.Directory.GetFiles(analysis_folder);
