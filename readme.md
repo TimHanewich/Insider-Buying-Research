@@ -15,4 +15,9 @@ All of these post-purchase performances will then be averaged together to establ
 By comparing the stock's average performance in ten years (or since IPO) to the stock's immediate performance following an insider purchase, we can gain insight into the correlation between stock price and insider buying.
 
 ## Conducting the Analysis
-We will be Aletheia (https://aletheiaapi.com/) for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/api/#latest-transactions. We can query insider transactions for a particular company and filter the results to only equity-based security purchases that occured between 2010-2019.
+We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/api/#latest-transactions. We can query insider transactions for a particular company and filter the results to only equity-based security purchases that occured between 2010-2019.  
+The below metrics pertain to the full S&P 500 from 2010 through 2019.  
+- Insider Transactions: 553,104
+- Average per company: 1,106
+- Most insider-trading active company: Facebook ($FB) with 7,312 insider trades during this time
+- Least insider-trading active companies: $APA, $C, $CARR, $FRC, $JPM, $MS, $OTIS, and $VRTS all with zero trades.
