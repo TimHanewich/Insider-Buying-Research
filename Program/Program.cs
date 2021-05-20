@@ -19,7 +19,7 @@ namespace Insider_Buying_Research
         }
 
         
-        //Step 1
+        //Step 1: Analyze stock performance
         public static void PerformFullAnalysis()
         {
             Console.Write("Path of folder containing S&P500 equity transactions (or single file): ");
@@ -137,6 +137,7 @@ namespace Insider_Buying_Research
             }
         }
 
+        //Step 3: Assemble results into a CSV file
         public static void AssembleResultsCsv()
         {
             Console.Write("Folder with the full analyses >");
