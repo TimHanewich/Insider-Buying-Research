@@ -5,6 +5,7 @@ using TimHanewich.Reserch;
 using TimHanewich.Reserch.Trailing;
 using TimHanewich.Reserch.Core;
 using Newtonsoft.Json;
+using TimHanewich.Csv;
 
 namespace Insider_Buying_Research
 {
@@ -12,16 +13,68 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            Console.Write("Path of folder containing S&P500 equity transactions: ");
-            string path1 = Console.ReadLine();
-            Console.Write("Path of full analysis export: ");
-            string path2 = Console.ReadLine();
+            Console.WriteLine("Folder with the full analyses >");
+            string analysis_folder = Console.ReadLine().Replace("\"", "");
 
-            //Clean paths
-            path1 = path1.Replace("\"", "");
-            path2 = path2.Replace("\"", "");
-            
-            PerformFulAnalysis(path1, path2);
+            Console.WriteLine("Output CSV file to folder:");
+            string output_folder = Console.ReadLine().Replace("\"", "");
+
+            string[] files = System.IO.Directory.GetFiles(analysis_folder);
+            AdminPrint(files.Length.ToString() + " files found");
+
+            CsvFile csv = new CsvFile();
+            DataRow headerrow = csv.AddNewRow();
+            headerrow.Values.Add("Symbol");
+
+            headerrow.Values.Add("Insider Buys");
+
+            //Average
+            headerrow.Values.Add("14 Days");
+            headerrow.Values.Add("30 Days");
+            headerrow.Values.Add("90 Days");
+            headerrow.Values.Add("180 Days");
+            headerrow.Values.Add("360 Days");
+
+            //Following buys
+            headerrow.Values.Add("14 Days");
+            headerrow.Values.Add("30 Days");
+            headerrow.Values.Add("90 Days");
+            headerrow.Values.Add("180 Days");
+            headerrow.Values.Add("360 Days");
+
+            foreach (string s in files)
+            {
+                DataRow dr = csv.AddNewRow();
+
+                AdminPrint("Opening " + System.IO.Path.GetFileName(s) + "...");
+                FullResearchSet frs = JsonConvert.DeserializeObject<FullResearchSet>(System.IO.File.ReadAllText(s));
+                AdminPrint("Writing " + System.IO.Path.GetFileName(s) + "...");
+
+                dr.Values.Add(frs.Symbol.ToUpper().Trim());
+                dr.Values.Add(frs.PerformancesFollowingInsiderBuys.Length.ToString());
+
+                //Write the average over that period
+                dr.Values.Add(frs.AveragePerformance.Return14.ToString());
+                dr.Values.Add(frs.AveragePerformance.Return30.ToString());
+                dr.Values.Add(frs.AveragePerformance.Return90.ToString());
+                dr.Values.Add(frs.AveragePerformance.Return180.ToString());
+                dr.Values.Add(frs.AveragePerformance.Return360.ToString());
+
+                //Get the averages
+                StockPerformanceSet avg = StockPerformanceSet.Average(frs.PerformancesFollowingInsiderBuys);
+                dr.Values.Add(avg.Return14.ToString());
+                dr.Values.Add(avg.Return30.ToString());
+                dr.Values.Add(avg.Return90.ToString());
+                dr.Values.Add(avg.Return180.ToString());
+                dr.Values.Add(avg.Return360.ToString()); 
+            }
+
+            //Write to the file
+            AdminPrint("Writing to file...");
+            string path = output_folder + "\\InsiderBuyPerformance.csv";
+            System.IO.File.Create(path);
+            System.IO.File.WriteAllText(path, csv.GenerateAsCsvFileContent());
+            AdminPrint("Successfully wrote to " + path, ConsoleColor.Green);
         }
 
         public static void PerformFulAnalysis(string non_derivative_transactions_folder, string place_analyses_in)
