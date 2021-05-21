@@ -16,20 +16,7 @@ namespace Insider_Buying_Research
         static void Main(string[] args)
         {
             SecCollectionHelper col = new SecCollectionHelper();
-            col.TryRetrieveAndStoreNonDerivativeTransactionsAsync("C", @"C:\Users\tahan\Downloads\Insider-Buying-Research\Sp500NonDerivativeTransactions").Wait();
-
-            // NonDerivativeTransaction[] transactions = JsonConvert.DeserializeObject<NonDerivativeTransaction[]>(System.IO.File.ReadAllText(@"C:\Users\tahan\Downloads\Insider-Buying-Research\Sp500NonDerivativeTransactions\C.json"));
-            // foreach (NonDerivativeTransaction ndt in transactions)
-            // {
-            //     if (ndt.TransactionDate.HasValue)
-            //     {
-            //         Console.WriteLine(ndt.TransactionDate.Value.ToString());
-            //     }
-            //     else
-            //     {
-            //         Console.WriteLine("No date");
-            //     }  
-            // }
+            col.StoreSP500NonDerivateTransactionsInFolderAsync(args[0].Replace("\"", "")).Wait();
         }
 
         #region "Utility/research"
