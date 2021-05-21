@@ -58,15 +58,15 @@ namespace TimHanewich.Reserch
             PrintStatus = print_status;
 
             TryPrintStatus("Getting all form 3 filings...");
-            EdgarFiling[] filings3 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "3", false);
+            EdgarFiling[] filings3 = await CollectAllFilingsOfTypeAsync(symbol_or_cik, "3");
             TryPrintStatus(filings3.Length.ToString("#,##0") + " form 3's found");
             await Task.Delay(500);
             TryPrintStatus("Getting all form 4 filings...");
-            EdgarFiling[] filings4 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "4", false);
+            EdgarFiling[] filings4 = await CollectAllFilingsOfTypeAsync(symbol_or_cik, "4");
             TryPrintStatus(filings4.Length.ToString("#,##0") + " form 4's found");
             await Task.Delay(500);
             TryPrintStatus("Getting all form 5 filings...");
-            EdgarFiling[] filings5 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "5", false);
+            EdgarFiling[] filings5 = await AletheiaToolkit.CollectAllFilingsOfTypeAsync(symbol_or_cik, "5");
             TryPrintStatus(filings5.Length.ToString("#,##0") + " form 5's found");
             await Task.Delay(500);
 
