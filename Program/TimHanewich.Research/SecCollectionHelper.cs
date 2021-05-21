@@ -11,6 +11,47 @@ namespace TimHanewich.Reserch
     {
         private bool PrintStatus;
 
+        public async Task<EdgarFiling[]> CollectAllFilingsOfTypeAsync(string symbol, string form)
+        {
+            List<EdgarFiling> ToReturn = new List<EdgarFiling>();
+
+            EdgarSearch es = await EdgarSearch.CreateAsync(symbol, form, null, EdgarSearchOwnershipFilter.only, EdgarSearchResultsPerPage.Entries100);
+            bool ShouldContinue = true;
+            while (ShouldContinue)
+            {
+                foreach (EdgarFiling ef in es.Results)
+                {
+                    //Check if we already have this
+                    bool AlreadyHaveIt = false;
+                    foreach (EdgarFiling ahef in ToReturn)
+                    {
+                        if (ahef.DocumentsUrl == ef.DocumentsUrl)
+                        {
+                            AlreadyHaveIt = true;
+                        }
+                    }
+
+                    //If we don't have it, add it
+                    if (AlreadyHaveIt == false)
+                    {
+                        ToReturn.Add(ef);
+                    }
+                }
+            
+                //Is more available?
+                if (es.NextPageAvailable())
+                {
+                    es = await es.NextPageAsync();
+                }
+                else
+                {
+                    ShouldContinue = false;
+                }            
+            }
+
+            return ToReturn.ToArray();
+        }
+
         public async Task<NonDerivativeTransaction[]> GetAllNonDerivativeTransactionsAsync(string symbol_or_cik, bool print_status = false)
         {
             List<NonDerivativeTransaction> ToReturn = new List<NonDerivativeTransaction>();
