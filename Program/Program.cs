@@ -38,13 +38,12 @@ namespace Insider_Buying_Research
                 NonDerivativeTransaction[] transactions = JsonConvert.DeserializeObject<NonDerivativeTransaction[]>(System.IO.File.ReadAllText(s));
                 
                 //Count those between 2010 and 2019
-                int counted = 0;
                 NonDerivativeTransaction[] filtered_time = rt.FilterToTimePeriod(transactions);
 
                 DataRow dr = csv.AddNewRow();
                 dr.Values.Add(System.IO.Path.GetFileName(s));
-                dr.Values.Add(counted.ToString());
-                Console.WriteLine(System.IO.Path.GetFileName(s) + "-" + counted.ToString());
+                dr.Values.Add(filtered_time.Length.ToString());
+                Console.WriteLine(System.IO.Path.GetFileName(s) + "-" + filtered_time.Length.ToString());
             }
 
             Stream ss = System.IO.File.Create(outputto + "\\output.csv");
