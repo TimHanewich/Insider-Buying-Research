@@ -14,7 +14,7 @@ To answer these questions we will assess the performance of S&P 500 components f
 All of these post-purchase performances will then be averaged together to establish the average performance of this stock following an insider purchase. This performance set will then be compared to the stock's average performance (for these same intervals) over the course of 2010 through 2019.  
 By comparing the stock's average performance in ten years (or since IPO) to the stock's immediate performance following an insider purchase, we can gain insight into the correlation between stock price and insider buying.
 
-## Filtering to 2010-2019 Trades
+## Filtering to 2010-2019 Transactions
 We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/api/#latest-transactions. We can query insider transactions for a particular company and filter the results to only equity-based security purchases that occured between 2010-2019.  
 The below metrics pertain to the full S&P 500 from 2010 through 2019.  
 - Insider Transactions: 584,246
@@ -26,3 +26,13 @@ The below metrics pertain to the full S&P 500 from 2010 through 2019.
     - Organon & Co (OGN)
     - Otis Worldwide Corporation (OTIS)
     - Viatris (VTRS)
+
+## Filtering to Purchase Acquisitons
+Building from the time-filtered transactions from above, we now will further filter our data set to only include **Open market or private purchases of securities**. This means the insider themselves voluntarily purchased shares of their associated company with their own funding - putting their own money on the line! This is (supposedly) the most indicative a bullish sentiment.
+The below metrics describe the number of insider purchase acquisitions during 2010-2019 for the S&P500:
+- Transactions: 13,639
+- Average per company: 27
+- Median per company: 10
+    - As seen below, there were several outliers that had a disproportionately large number of insider buys between 2010-2019. The gap between the the average (mean) and median is indicative of this.
+- Most transactions: Bank of America (BAC) with 1,769 insider buys
+- 32 companies were tied for fewest insider purchases during this time period with 0 trades.
