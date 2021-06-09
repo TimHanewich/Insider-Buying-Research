@@ -17,10 +17,6 @@ namespace TimHanewich.Reserch.Core
 
         public async Task GenerateFromTransactionsFileAsync(string path)    
         {
-            //Start with vars
-            List<NonDerivativeTransaction> ta_AnalyzedTransactions = new List<NonDerivativeTransaction>();
-            List<StockPerformanceSet> ta_PerformancesFollowingInsiderBuys = new List<StockPerformanceSet>();
-
             //Get the name of the stock
             PrintStatus("Getting symbol from path.");
             Symbol = System.IO.Path.GetFileName(path).Replace(".json", "").ToUpper().Trim();
@@ -50,8 +46,9 @@ namespace TimHanewich.Reserch.Core
             AveragePerformance = sps_avg;
 
             //Get the performances after each buy
+            List<StockPerformanceSet> PerformancesFollowingBuys = new List<StockPerformanceSet>();
             PrintStatus("Starting the performance calculation following each insider buy...");
-            foreach (NonDerivativeTransaction ndt in ta_AnalyzedTransactions)
+            foreach (NonDerivativeTransaction ndt in focus)
             {
                 StockPerformanceSet sps = new StockPerformanceSet();
                 PrintStatus("Calculating performance since buy on " + ndt.TransactionDate.Value.ToShortDateString() + "...");
@@ -59,7 +56,7 @@ namespace TimHanewich.Reserch.Core
                 {
                     await sps.CalculateReturnsAsync(Symbol, ndt.TransactionDate.Value);
                     Console.WriteLine("Performance calculated!");
-                    ta_PerformancesFollowingInsiderBuys.Add(sps);
+                    PerformancesFollowingBuys.Add(sps);
                 }
                 catch (Exception ex)
                 {
@@ -68,7 +65,7 @@ namespace TimHanewich.Reserch.Core
             }
 
             //Add them
-            PerformancesFollowingInsiderBuys = ta_PerformancesFollowingInsiderBuys.ToArray();
+            PerformancesFollowingInsiderBuys = PerformancesFollowingBuys.ToArray();
 
             PrintStatus("Generation complete!");
         }
