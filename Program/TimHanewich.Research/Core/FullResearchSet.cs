@@ -30,44 +30,10 @@ namespace TimHanewich.Reserch.Core
             ResearchToolkit rt = new ResearchToolkit();
             PrintStatus("Loading transactions from file.");
             NonDerivativeTransaction[] alltransactions = await rt.OpenNonDerivativeTransactionsAsync(path);
-            PrintStatus(alltransactions.Length.ToString("#,##0") + " loaded.");
-            PrintStatus("Filtering to only buys...");
-            NonDerivativeTransaction[] buys = rt.FilterToBuys(alltransactions);
-            PrintStatus(buys.Length.ToString() + " buys found.");
-            PrintStatus("Sorting...");
-            NonDerivativeTransaction[] sorted = rt.SortByTransactionDate(buys);
-            PrintStatus(sorted.Length.ToString() + " sorted!");
-            
-            //Filter to just the particular date range
-            //2010 - 2019, including 2019. So 10 years: 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
-            PrintStatus("Filtering to only in range.");
-            List<NonDerivativeTransaction> InDateRange = new List<NonDerivativeTransaction>();
-            foreach (NonDerivativeTransaction ndt in sorted)
-            {
-                if (ndt.TransactionDate.HasValue)
-                {
-                    if (ndt.TransactionDate.Value >= new DateTime(2010, 1, 1)) //Older than (or equal to) 2010
-                    {
-                        if (ndt.TransactionDate.Value < new DateTime(2020, 1, 1)) //Before 2020 (2019 or earlier)
-                        {
-                            InDateRange.Add(ndt);
-                        }
-                    }
-                }
-            }
-            PrintStatus(InDateRange.Count.ToString() + " found in date range.");
-
-            //Check if there are any. If not, cancel
-            if (InDateRange.Count == 0)
-            {
-                PrintStatus("Nothing to analyze here! Cancelling.");
-                AveragePerformance = null;
-                PerformancesFollowingInsiderBuys = ta_PerformancesFollowingInsiderBuys.ToArray();
-                return;
-            }
-
-            //Now that we have all of the non derivative transactions that we are going to do (filtered heavily), add them to the focus
-            ta_AnalyzedTransactions.AddRange(InDateRange);
+            Console.WriteLine(alltransactions.Length.ToString() + " transactions found.");
+            Console.Write("Filtering to focus... ");
+            NonDerivativeTransaction[] focus = rt.FilterToTransactionsOfInterest(alltransactions);
+            Console.WriteLine(focus.Length.ToString() + " transactions to focus on.");
 
             //Get the average performance
             StockPerformanceSet sps_avg = new StockPerformanceSet();
