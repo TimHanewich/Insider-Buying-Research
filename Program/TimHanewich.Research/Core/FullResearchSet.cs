@@ -12,7 +12,6 @@ namespace TimHanewich.Reserch.Core
         private bool PrintStatusChanges;
 
         public string Symbol {get; set;}
-        public NonDerivativeTransaction[] AnalyzedTransactions {get; set;}
         public StockPerformanceSet AveragePerformance {get; set;}
         public StockPerformanceSet[] PerformancesFollowingInsiderBuys {get; set;}
 
@@ -62,7 +61,6 @@ namespace TimHanewich.Reserch.Core
             if (InDateRange.Count == 0)
             {
                 PrintStatus("Nothing to analyze here! Cancelling.");
-                AnalyzedTransactions = ta_AnalyzedTransactions.ToArray();
                 AveragePerformance = null;
                 PerformancesFollowingInsiderBuys = ta_PerformancesFollowingInsiderBuys.ToArray();
                 return;
@@ -104,7 +102,6 @@ namespace TimHanewich.Reserch.Core
             }
 
             //Add them
-            AnalyzedTransactions = ta_AnalyzedTransactions.ToArray();
             PerformancesFollowingInsiderBuys = ta_PerformancesFollowingInsiderBuys.ToArray();
 
             PrintStatus("Generation complete!");
