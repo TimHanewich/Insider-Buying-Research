@@ -45,7 +45,7 @@ namespace Insider_Buying_Research
                 DataRow dr = csv.AddNewRow();
                 dr.Values.Add(System.IO.Path.GetFileName(s));
                 dr.Values.Add(count.ToString());
-                Console.WriteLine(System.IO.Path.GetFileName(s) + "-" + count.Length.ToString());
+                Console.WriteLine(System.IO.Path.GetFileName(s) + "-" + count.ToString());
             }
 
             Stream ss = System.IO.File.Create(outputto + "\\output.csv");
