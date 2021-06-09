@@ -63,6 +63,7 @@ namespace TimHanewich.Reserch.Core
                 {
                     Console.WriteLine("Failure while processing performance since buy on " + ndt.TransactionDate.Value.ToShortDateString() + ": " + ex.Message);
                 }
+                PCount = PCount + 1;
             }
 
             //Add them
