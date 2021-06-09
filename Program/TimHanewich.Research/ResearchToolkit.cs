@@ -44,24 +44,10 @@ namespace TimHanewich.Reserch
             return ToReturn.ToArray();
         }
 
-        public NonDerivativeTransaction[] FilterToTransactionsOfInterest(NonDerivativeTransaction[] all)
+        public NonDerivativeTransaction[] FilterToTimePeriod(NonDerivativeTransaction[] all)
         {
-            //Filter to only buys
-            List<NonDerivativeTransaction> F1 = new List<NonDerivativeTransaction>();
-            foreach (NonDerivativeTransaction ndt in all)
-            {
-                if (ndt.AcquiredOrDisposed == AcquiredDisposed.Acquired)
-                {
-                    if (ndt.TransactionCode == TransactionType.OpenMarketOrPrivatePurchase)
-                    {
-                        F1.Add(ndt);
-                    }
-                }
-            }
-
-            //Filter to occuring between 2010 and 2019 (first day of 2010 to last day of 2019)
             List<NonDerivativeTransaction> F2 = new List<NonDerivativeTransaction>();
-            foreach (NonDerivativeTransaction ndt in F1)
+            foreach (NonDerivativeTransaction ndt in all)
             {
                 if (ndt.TransactionDate.HasValue)
                 {
@@ -71,8 +57,18 @@ namespace TimHanewich.Reserch
                     }
                 }
             }
+            return all.ToArray();
+        }
 
-            return F2.ToArray();
+        public NonDerivativeTransaction[] FilterToTransactionsOfInterest(NonDerivativeTransaction[] all)
+        {
+            //Filter to only buys
+            NonDerivativeTransaction[] F1 = FilterToBuys(all);
+
+            //Filter to occuring between 2010 and 2019 (first day of 2010 to last day of 2019)
+            NonDerivativeTransaction[] F2 = FilterToTimePeriod(F1);
+
+            return F2;
         }
 
         //Arrange from oldest to newest
