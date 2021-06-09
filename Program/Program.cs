@@ -30,6 +30,7 @@ namespace Insider_Buying_Research
             string outputto = Console.ReadLine().Replace("\"", "");
 
             CsvFile csv = new CsvFile();
+            ResearchToolkit rt = new ResearchToolkit();
             
 
             string[] files = System.IO.Directory.GetFiles(folder);
@@ -39,19 +40,7 @@ namespace Insider_Buying_Research
                 
                 //Count those between 2010 and 2019
                 int counted = 0;
-                foreach (NonDerivativeTransaction ndt in transactions)
-                {
-                    if (ndt.TransactionDate.HasValue)
-                    {
-                        if (ndt.TransactionDate.Value >= new DateTime(2010, 1, 1)) //Older than (or equal to) 2010
-                        {
-                            if (ndt.TransactionDate.Value < new DateTime(2020, 1, 1)) //Before 2020 (2019 or earlier)
-                            {
-                                counted = counted + 1;
-                            }
-                        }
-                    }
-                }
+                NonDerivativeTransaction[] filtered_time = rt.FilterToTimePeriod(transactions);
 
                 DataRow dr = csv.AddNewRow();
                 dr.Values.Add(System.IO.Path.GetFileName(s));
