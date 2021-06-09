@@ -82,10 +82,11 @@ namespace Insider_Buying_Research
             }
             
             //Process each
+            int FileCounter = 1;
             foreach (string s in files)
             {
                 string file_name = System.IO.Path.GetFileName(s);
-                AdminPrint("Checking " + file_name + "...");
+                AdminPrint("Checking #" + FileCounter.ToString() + "/" + files.Length.ToString() + ": " + file_name + "...");
                 if (System.IO.File.Exists(path2 + "\\" + file_name) == false)
                 {
                     AdminPrint("This has not been research yet. Going!");
@@ -127,6 +128,8 @@ namespace Insider_Buying_Research
                 {
                     AdminPrint("This has already been researched. skipping.");
                 }
+
+                FileCounter = FileCounter + 1;
             }
         }
     

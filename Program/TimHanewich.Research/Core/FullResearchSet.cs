@@ -26,10 +26,10 @@ namespace TimHanewich.Reserch.Core
             ResearchToolkit rt = new ResearchToolkit();
             PrintStatus("Loading transactions from file.");
             NonDerivativeTransaction[] alltransactions = await rt.OpenNonDerivativeTransactionsAsync(path);
-            Console.WriteLine(alltransactions.Length.ToString() + " transactions found.");
-            Console.Write("Filtering to focus... ");
+            PrintStatus(alltransactions.Length.ToString() + " transactions found.");
+            PrintStatus("Filtering to focus... ");
             NonDerivativeTransaction[] focus = rt.FilterToTransactionsOfInterest(alltransactions);
-            Console.WriteLine(focus.Length.ToString() + " transactions to focus on.");
+            PrintStatus(focus.Length.ToString() + " transactions to focus on.");
 
             //Get the average performance
             StockPerformanceSet sps_avg = new StockPerformanceSet();
@@ -48,10 +48,11 @@ namespace TimHanewich.Reserch.Core
             //Get the performances after each buy
             List<StockPerformanceSet> PerformancesFollowingBuys = new List<StockPerformanceSet>();
             PrintStatus("Starting the performance calculation following each insider buy...");
+            int PCount = 1;
             foreach (NonDerivativeTransaction ndt in focus)
             {
                 StockPerformanceSet sps = new StockPerformanceSet();
-                PrintStatus("Calculating performance since buy on " + ndt.TransactionDate.Value.ToShortDateString() + "...");
+                PrintStatus("Calculating performance since buy on " + ndt.TransactionDate.Value.ToShortDateString() + " (" + PCount.ToString() + "/" + focus.Length.ToString() + ")...");
                 try
                 {
                     await sps.CalculateReturnsAsync(Symbol, ndt.TransactionDate.Value);
