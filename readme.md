@@ -19,5 +19,10 @@ We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing
 The below metrics pertain to the full S&P 500 from 2010 through 2019.  
 - Insider Transactions: 584,246
 - Average per company: 1,162
-- Most insider-trading active company: Facebook ($FB) with 7,312 insider trades during this time
-- Least insider-trading active companies: $APA, $C, $CARR, $FRC, $JPM, $MS, $OTIS, and $VRTS all with zero trades.
+- Most insider-trading active company: Facebook (FB) with 7,375 insider trades during this time
+- The following companies were tied for the fewest number of insider trades with 0 equity transactions each:
+    - APA Corporation (APA)
+    - Carrier Global Corporation (CARR)
+    - Organon & Co (OGN)
+    - Otis Worldwide Corporation (OTIS)
+    - Viatris (VTRS)
