@@ -15,8 +15,7 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            SecCollectionHelper col = new SecCollectionHelper();
-            col.StoreSP500NonDerivateTransactionsInFolderAsync(args[0].Replace("\"", "")).Wait();
+            CountAllTransactions();
         }
 
         #region "Utility/research"
