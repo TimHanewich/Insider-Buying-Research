@@ -44,6 +44,37 @@ namespace TimHanewich.Reserch
             return ToReturn.ToArray();
         }
 
+        public NonDerivativeTransaction[] FilterToTransactionsOfInterest(NonDerivativeTransaction[] all)
+        {
+            //Filter to only buys
+            List<NonDerivativeTransaction> F1 = new List<NonDerivativeTransaction>();
+            foreach (NonDerivativeTransaction ndt in all)
+            {
+                if (ndt.AcquiredOrDisposed == AcquiredDisposed.Acquired)
+                {
+                    if (ndt.TransactionCode == TransactionType.OpenMarketOrPrivatePurchase)
+                    {
+                        F1.Add(ndt);
+                    }
+                }
+            }
+
+            //Filter to occuring between 2010 and 2019 (first day of 2010 to last day of 2019)
+            List<NonDerivativeTransaction> F2 = new List<NonDerivativeTransaction>();
+            foreach (NonDerivativeTransaction ndt in F1)
+            {
+                if (ndt.TransactionDate.HasValue)
+                {
+                    if (ndt.TransactionDate.Value.Year >= 2010 && ndt.TransactionDate.Value.Year <= 2019) //Year is between 2010 and 2019, including 2010 and 2019
+                    {
+                        F2.Add(ndt);
+                    }
+                }
+            }
+
+            return F2.ToArray();
+        }
+
         //Arrange from oldest to newest
         public NonDerivativeTransaction[] SortByTransactionDate(NonDerivativeTransaction[] all)
         {
