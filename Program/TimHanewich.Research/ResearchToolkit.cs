@@ -57,7 +57,7 @@ namespace TimHanewich.Reserch
                     }
                 }
             }
-            return all.ToArray();
+            return F2.ToArray();
         }
 
         public NonDerivativeTransaction[] FilterToTransactionsOfInterest(NonDerivativeTransaction[] all)
