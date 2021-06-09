@@ -15,7 +15,7 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            CountAllTransactions();
+            PerformFullAnalysis();
         }
 
         #region "Utility/research"
