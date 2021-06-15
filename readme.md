@@ -54,16 +54,16 @@ Summarizing our entire dataset:
 
 Furthermore, we dig deeper and discover which company insiders achieve the highest level of outperformance following a purchase as compared to the typical stock capital returns.
 
-### Highest Outperformance
+### Highest Outperformance Following Inside Buys
 |Period|Symbol|Name|Typical Performance|Avg Performance Following Inside Buy|# of Inside Buys|
 |-|-|-|-|-|-|
 |14 Day|SKWS|Skyworks Solutions|0.9%|19.1%|2|
 |30 Day|SKWS|Skyworks Solutions|1.8%|36.5%|2|
 |90 Day|SKWS|Skyworks Solutions|5.6%|46.6%|2|
 |180 Day|NOV|NOV Inc|-1.6%|58.3%|2|
-|360 Day|PHM|PulteGroup, Inc|15.4%|120.5%|26|
+|360 Day|PHM|PulteGroup Inc|15.4%|120.5%|26|
 
-We can also take a closer look at the opposite of the above - which stocks are likely to lag behind average returns following an insider purchase?
+We can also take a closer look at the opposite - which stocks are likely to lag behind their average returns following an insider purchase?
 ### Laggards Following Inside Buys
 |Period|Symbol|Name|Typical Performance|Avg Performance Following Inside Buy|# of Inside Buys|
 |-|-|-|-|-|-|
