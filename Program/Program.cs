@@ -262,6 +262,7 @@ namespace Insider_Buying_Research
             FileStream fs = System.IO.File.Create(path);
             StreamWriter sw = new StreamWriter(fs);
             sw.Write(csv.GenerateAsCsvFileContent());
+            sw.Close();
             fs.Close();
             AdminPrint("Successfully wrote to " + path, ConsoleColor.Green);
         }
