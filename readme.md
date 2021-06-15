@@ -43,7 +43,7 @@ Including this filter noted above, we are arrive at 12,502 transactions across 4
 
 ## Analysis Results
 We then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. In doing so, it is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.
-|Period|Avg Return|Return following inside buy|
+|Period|Average Return|Average Return Following Inside Buy|
 |-|-|-|
 |14 Day|0.5%|1.2%|
 |30 Day|1.2%|2.2%|
