@@ -72,3 +72,10 @@ We can also take a closer look at the opposite - which stocks are likely to lag 
 |90 Day|AVGO|Broadcom Inc|7.8%|-13.8%|10|
 |180 Day|AAPL|Apple Inc|12.7%|-8.3%|11|
 |360 Day|ILMN|Illumina Inc|26.5%|-43.6%|19
+
+## Results Interpretation
+The evidence clearly shows that, on average, stocks will outperform following an insider buy in both the short and long term. In the short term, this outperformance is sometimes as much as double the typical capital return. In the long term, this edge hovers around 415 basis points above the typical capital returns you would see in a non-insider purchase period.
+
+So how do we interpret this? Unsurprisingly, this likely confirms that insiders are trading with "insider information", information that they uniquely benefit from due to their close relationship with the subject company. This information allows them to better predict future prospects of the company and to time their purchasing with company press releases, or product development breakthroughs, industry-related news. This is strongly evident in the table shown above that highlights the highest outperforming stocks following insider purchases; these insiders may have made trades selectively ahead of important achievements in the company's results or R&D. The insider information allowed them the foresight to get into the stock at desireable levels.
+
+On the flip side, this could mean something very different for the insider buys that went wrong. **Of the 419 companies that we examined, 167 of them (almost 40%!) underperformed following an insider purchase in the long run**. This may be the result of several C-Suite executives purchasing stock in their own company in an attempt to instill the public's confidence in their company's publicly traded common stock. If this is the case, we could further suppose that these insiders are buying stock ahead of particularly trying times (their buying could be interpreted as an attempt to "counteract" this) and in the long run these trying times got the better of the company in the markets.
