@@ -15,7 +15,7 @@ namespace Insider_Buying_Research
     {
         static void Main(string[] args)
         {
-            PerformFullAnalysis();
+            AssembleResultsCsv();
         }
 
         #region "Utility/research"
@@ -192,6 +192,19 @@ namespace Insider_Buying_Research
             AdminPrint(files.Length.ToString() + " files found");
 
             CsvFile csv = new CsvFile();
+
+            //Label the averages
+            DataRow drl = csv.AddNewRow();
+            drl.Values.Add("");
+            drl.Values.Add("");
+            drl.Values.Add("Averages");
+            drl.Values.Add("");
+            drl.Values.Add("");
+            drl.Values.Add("");
+            drl.Values.Add("");
+            drl.Values.Add("Following buys");
+
+
             DataRow headerrow = csv.AddNewRow();
             headerrow.Values.Add("Symbol");
 
