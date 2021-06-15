@@ -236,11 +236,16 @@ namespace Insider_Buying_Research
                 dr.Values.Add(frs.PerformancesFollowingInsiderBuys.Length.ToString());
 
                 //Write the average over that period
-                dr.Values.Add(frs.AveragePerformance.Return14.ToString());
-                dr.Values.Add(frs.AveragePerformance.Return30.ToString());
-                dr.Values.Add(frs.AveragePerformance.Return90.ToString());
-                dr.Values.Add(frs.AveragePerformance.Return180.ToString());
-                dr.Values.Add(frs.AveragePerformance.Return360.ToString());
+                string ar14 = frs.AveragePerformance.Return14.ToString();
+                string ar30 = frs.AveragePerformance.Return30.ToString();
+                string ar90 = frs.AveragePerformance.Return90.ToString();
+                string ar180 = frs.AveragePerformance.Return180.ToString();
+                string ar360 = frs.AveragePerformance.Return360.ToString();
+                dr.Values.Add(ar14);
+                dr.Values.Add(ar30);
+                dr.Values.Add(ar90);
+                dr.Values.Add(ar180);
+                dr.Values.Add(ar360);
 
                 //Get the averages
                 StockPerformanceSet avg = StockPerformanceSet.Average(frs.PerformancesFollowingInsiderBuys);
