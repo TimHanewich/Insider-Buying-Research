@@ -15,7 +15,7 @@ All of these post-purchase performances will then be averaged together to establ
 By comparing the stock's average performance in ten years (or since IPO) to the stock's immediate performance following an insider purchase, we can gain insight into the correlation between stock price and insider buying.
 
 ## Filtering to 2010-2019 Transactions
-We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/api/#latest-transactions. We can query insider transactions for a particular company and filter the results to only equity-based security purchases that occured between 2010-2019.  
+We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/api/#latest-transactions. Aletheia provides the ability to query insider transactions for a particular company and filter the results to only equity-based security purchases that occured between 2010-2019.  
 The below metrics pertain to the full S&P 500 from 2010 through 2019.  
 - Insider Transactions: 584,246
 - Average per company: 1,162
@@ -28,7 +28,7 @@ The below metrics pertain to the full S&P 500 from 2010 through 2019.
     - Viatris (VTRS)
 
 ## Filtering to Purchase Acquisitons
-Building from the time-filtered transactions from above, we now will further filter our data set to only include **Open market or private purchases of securities**. This means the insider themselves voluntarily purchased shares of their associated company with their own funding - putting their own money on the line! This is (supposedly) the most indicative a bullish sentiment.
+Building from the time-filtered transactions set from above, we now will further filter our data set to only include **Open market or private purchases of securities**. This means the insiders themselves voluntarily purchased shares of their associated company with their own funding - putting their own money on the line! This is (supposedly) the most indicative of a bullish sentiment.
 The below metrics describe the number of insider purchase acquisitions during 2010-2019 for the S&P500:
 - Transactions: 13,639
 - Average per company: 27
@@ -38,13 +38,13 @@ The below metrics describe the number of insider purchase acquisitions during 20
 - 32 companies were tied for fewest insider purchases during this time period with 0 trades.
 
 ## Removing companies with insufficient historical data
-Not every component of the S&P 500 has been publicly traded from 2010 through 2019. Our research is exclusively focusing on this ten year span. Our data could easily become skewed if we forecasted a ten year average return for a company that has only been traded for the most recent three years. For this reason, we will only focus on companies that have been trading history during the full 2019-2019 timespan.  
-Including this filter noted above, we are arrive at 12,502 transactions across 419 companies with well-formed data that can be used in this analysis.
+Not every component of the S&P 500 has been publicly traded from 2010 through 2019. Our research is exclusively focusing on this ten year span. Our data could easily become skewed if we forecasted a ten year average return for a company that has only been traded for the most recent three years. For this reason, we will only focus on companies that have been trading history during the full 2010-2019 timespan.  
+Including this filter noted above, we arrive at 12,502 transactions across 419 companies with well-formed data that can be used in this analysis.
 
 ## Analysis Results
-We then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. In doing so, it is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.  
+As planned, we then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. In doing so, it is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.  
 Summarizing our entire dataset:
-|Period|Average Return|Average Return Following Inside Buy|
+|Period|Average S&P 500 Return|Average S&P 500 Component Return Following Inside Buy|
 |-|-|-|
 |14 Day|0.5%|1.2%|
 |30 Day|1.2%|2.2%|
@@ -74,8 +74,8 @@ We can also take a closer look at the opposite - which stocks are likely to lag 
 |360 Day|ILMN|Illumina Inc|26.5%|-43.6%|19
 
 ## Results Interpretation
-The evidence clearly shows that, on average, stocks will outperform following an insider buy in both the short and long term. In the short term, this outperformance is sometimes as much as double the typical capital return. In the long term, this edge hovers around 415 basis points above the typical capital returns you would see in a non-insider purchase period.
+The evidence clearly shows that, on average, stocks will outperform following an insider purchase in both the short and long term. In the short term, this outperformance is sometimes as much as double the typical capital return. In the long term, this edge hovers around 415 basis points above the typical capital returns you would see in a non-insider purchase period.
 
-So how do we interpret this? Unsurprisingly, this likely confirms that insiders are trading with "insider information", information that they uniquely benefit from due to their close relationship with the subject company. This information allows them to better predict future prospects of the company and to time their purchasing with company press releases, or product development breakthroughs, industry-related news. This is strongly evident in the table shown above that highlights the highest outperforming stocks following insider purchases; these insiders may have made trades selectively ahead of important achievements in the company's results or R&D. The insider information allowed them the foresight to get into the stock at desireable levels.
+So how do we interpret this? Unsurprisingly, this likely confirms that insiders are trading with "insider information", information that they uniquely benefit from due to their close relationship with the subject company. This information allows them to better predict future prospects of the company and to time their purchasing with company press releases, product development breakthroughs, or industry-related news. This is strongly evident in the table shown above that highlights the highest outperforming stocks following insider purchases; these insiders may have made trades selectively ahead of important achievements in the company's results or R&D. The insider information allowed them the foresight to get into the stock at desireable levels.
 
 On the flip side, this could mean something very different for the insider buys that went wrong. **Of the 419 companies that we examined, 167 of them (almost 40%!) underperformed following an insider purchase in the long run**. This may be the result of several C-Suite executives purchasing stock in their own company in an attempt to instill the public's confidence in their company's publicly traded common stock. If this is the case, we could further suppose that these insiders are buying stock ahead of particularly trying times (their buying could be interpreted as an attempt to "counteract" this) and in the long run these trying times got the better of the company in the markets.
