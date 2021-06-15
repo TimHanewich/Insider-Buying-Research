@@ -36,3 +36,17 @@ The below metrics describe the number of insider purchase acquisitions during 20
     - As seen below, there were several outliers that had a disproportionately large number of insider buys between 2010-2019. The gap between the the average (mean) and median is indicative of this.
 - Most transactions: Bank of America (BAC) with 1,769 insider buys
 - 32 companies were tied for fewest insider purchases during this time period with 0 trades.
+
+## Removing companies with insufficient historical data
+Not every component of the S&P 500 has been publicly traded from 2010 through 2019. Our research is exclusively focusing on this ten year span. Our data could easily become skewed if we forecasted a ten year average return for a company that has only been traded for the most recent three years. For this reason, we will only focus on companies that have been trading history during the full 2019-2019 timespan.  
+Including this filter noted above, we are arrive at 12,502 transactions across 419 companies with well-formed data that can be used in this analysis.
+
+## Analysis Results
+We then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. In doing so, it is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.
+|Period|Avg Return|Return following inside buy|
+|-|-|-|
+|14 Day|0.5%|1.2%|
+|30 Day|1.2%|2.2%|
+|90 Day|3.6%|5.3%|
+|180 Day|7.3%|10.8%|
+|360 Day|15.3%|19.4%|
