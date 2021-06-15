@@ -42,7 +42,8 @@ Not every component of the S&P 500 has been publicly traded from 2010 through 20
 Including this filter noted above, we are arrive at 12,502 transactions across 419 companies with well-formed data that can be used in this analysis.
 
 ## Analysis Results
-We then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. In doing so, it is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.
+We then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. In doing so, it is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.  
+Summarizing our entire dataset:
 |Period|Average Return|Average Return Following Inside Buy|
 |-|-|-|
 |14 Day|0.5%|1.2%|
@@ -50,3 +51,24 @@ We then compare the average performance of each stock following an insider purch
 |90 Day|3.6%|5.3%|
 |180 Day|7.3%|10.8%|
 |360 Day|15.3%|19.4%|
+
+Furthermore, we dig deeper and discover which company insiders achieve the highest level of outperformance following a purchase as compared to the typical stock capital returns.
+
+### Highest Outperformance
+|Period|Symbol|Name|Typical Performance|Avg Performance Following Inside Buy|# of Inside Buys|
+|-|-|-|-|-|-|
+|14 Day|SKWS|Skyworks Solutions|0.9%|19.1%|2|
+|30 Day|SKWS|Skyworks Solutions|1.8%|36.5%|2|
+|90 Day|SKWS|Skyworks Solutions|5.6%|46.6%|2|
+|180 Day|NOV|NOV Inc|-1.6%|58.3%|2|
+|360 Day|PHM|PulteGroup, Inc|15.4%|120.5%|26|
+
+We can also take a closer look at the opposite of the above - which stocks are likely to lag behind average returns following an insider purchase?
+### Laggards Following Inside Buys
+|Period|Symbol|Name|Typical Performance|Avg Performance Following Inside Buy|# of Inside Buys|
+|-|-|-|-|-|-|
+|14 Day|RCL|Royal Caribbean Group|0.7%|-7.1%|24|
+|30 Day|AAPL|Apple Inc|2.0%|-10.0%|11|
+|90 Day|AVGO|Broadcom Inc|7.8%|-13.8%|10|
+|180 Day|AAPL|Apple Inc|12.7%|-8.3%|11|
+|360 Day|ILMN|Illumina Inc|26.5%|-43.6%|19
