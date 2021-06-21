@@ -41,7 +41,7 @@ The below metrics describe the number of insider purchase acquisitions during 20
 - 32 companies were tied for fewest insider purchases during this time period with 0 trades.
 
 ## Removing companies with insufficient historical data
-Not every component of the S&P 500 has been publicly traded from 2010 through 2019. Our research is exclusively focusing on this ten year span. Our data could easily become skewed if we forecasted a ten year average return for a company that has only been traded for the most recent three years. For this reason, we will only focus on companies that have been trading history during the full 2010-2019 timespan.  
+Not every component of the S&P 500 has been publicly traded from 2010 through 2019. Our research is exclusively focusing on this ten year span. Our data could easily become skewed if we forecasted a ten year average return for a company that has only been traded recently. For this reason, we will only focus on companies that have been trading history during the full 2010-2019 timespan.  
 Including this filter noted above, we arrive at 12,502 transactions across 419 companies with well-formed data that can be used in this analysis.
 
 ## Analysis Results
