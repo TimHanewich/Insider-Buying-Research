@@ -49,7 +49,7 @@ As planned, we compare the average performance of each stock following an inside
 
 *You can find the full analysis sets that was used to compile the below statistics in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/FullResearchSets.zip?raw=true). Each object (file) contains the subject stock, average performance over the ten year timeframe, and performances following each qualifying insider purchase.*
 
-It is clear that stock performance following an insider purchase typically outperforms in both the short and long term as compared to the stock's typical historical returns. 
+It is clear that stock performance following an insider purchase typically outperforms in both the short and long term as compared to the stock's typical historical returns.  
 Summarizing our entire dataset:
 |Period|Average S&P 500 Return|Average S&P 500 Component Return Following Inside Buy|
 |-|-|-|
