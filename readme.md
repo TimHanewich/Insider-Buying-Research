@@ -26,6 +26,7 @@ The below metrics pertain to the full S&P 500 from 2010 through 2019.
     - Organon & Co (OGN)
     - Otis Worldwide Corporation (OTIS)
     - Viatris (VTRS)
+    
 *You can find the full data set used to compile the above results in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/Sp500InsiderEquityTransactions.zip?raw=true)
 
 ## Filtering to Purchase Acquisitons
