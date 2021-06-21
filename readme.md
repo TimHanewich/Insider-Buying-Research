@@ -60,7 +60,7 @@ Summarizing our entire dataset:
 
 Furthermore, we dig deeper and discover which company insiders achieve the highest level of outperformance following a purchase as compared to the typical stock capital returns.
 
-### Highest Outperformance Following Inside Buys
+### Greatest Outperformance Following Inside Buys
 |Period|Symbol|Name|Typical Performance|Avg Performance Following Inside Buy|# of Inside Buys|
 |-|-|-|-|-|-|
 |14 Day|SKWS|Skyworks Solutions|0.9%|19.1%|2|
