@@ -32,7 +32,7 @@ The below metrics pertain to the full S&P 500 from 2010 through 2019.
 
 ## Filtering to Purchase Acquisitons
 Building from the time-filtered transactions set from above, we now will further filter our data set to only include **Open market or private purchases of securities**. This means the insiders themselves voluntarily purchased shares of their associated company with their own funding - putting their own money on the line! This is (supposedly) the most indicative of bullish insider sentiment.
-The below metrics describe the number of insider purchase acquisitions during 2010-2019 for the S&P500:
+The below metrics describe the number of insider purchase acquisitions during 2010-2019 for the S&P 500:
 - Transactions: 13,639
 - Average per company: 27
 - Median per company: 10
