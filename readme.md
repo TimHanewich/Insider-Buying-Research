@@ -74,7 +74,7 @@ We can also take a closer look at the opposite - which stocks are likely to lag 
 |30 Day|AAPL|Apple Inc|2.0%|-10.0%|11|
 |90 Day|AVGO|Broadcom Inc|7.8%|-13.8%|10|
 |180 Day|AAPL|Apple Inc|12.7%|-8.3%|11|
-|360 Day|ILMN|Illumina Inc|26.5%|-43.6%|19
+|360 Day|ILMN|Illumina Inc|26.5%|-43.6%|19|
 
 ## Results Interpretation
 The evidence clearly shows that, on average, stocks will outperform following an insider purchase in both the short and long term. In the short term, this outperformance is sometimes as much as double the typical capital return. In the long term, this edge hovers around 415 basis points above the typical capital returns you would see in a non-insider purchase period.
