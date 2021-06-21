@@ -1,4 +1,4 @@
-# Is insider buying always an indication of a soon-to-be rising stock price?
+# Examining the Correlation between Insider Buying and Subsequent Stock Performance
 Peter Lynch, the legendary former manager of Fidelity's Magellan fund once said "Insiders might sell their shares for any number of reasons, but they buy them for only one: they think the price will rise". In the years since Lynch made this statement, it has become a common maxim that insider buying (when an officer, director, or major shareholder) is an indication that there is something brewing at the company that will soon be followed with an abnormal positive performance of the stock price.  
 But is this always the case? Is every insider purchase followed by a gain? By how much do these gains eclipse that of the stock's usual performance? Is it possible that in some cases this is nothing more than a C-level officer trying to instill the public's confidence in the stock by putting his own money on the line? In this article I will attempt to answer these questions with candid research.
 
@@ -15,7 +15,7 @@ All of these post-purchase performances will then be averaged together to establ
 By comparing the stock's average performance in ten years (or since IPO) to the stock's immediate performance following an insider purchase, we can gain insight into the correlation between stock price and insider buying.
 
 ## Filtering to 2010-2019 Transactions
-We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/api/#latest-transactions. Aletheia provides the ability to query insider transactions for a particular company and filter the results to only equity-based security purchases that occured between 2010-2019.  
+We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/api/#latest-transactions. Aletheia's service provides the ability to query insider transactions for a particular company and filter the results to only equity-based security purchases that occured between 2010-2019.  
 The below metrics pertain to the full S&P 500 from 2010 through 2019.  
 - Insider Transactions: 584,246
 - Average per company: 1,162
