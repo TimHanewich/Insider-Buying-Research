@@ -59,7 +59,7 @@ Summarizing our entire dataset:
 |180 Day|7.3%|10.8%|
 |360 Day|15.3%|19.4%|
 
-Furthermore, we dig deeper and discover which company insiders achieve the highest level of outperformance following a purchase as compared to the typical stock capital returns.
+Furthermore, we can dig deeper and discover which company insiders achieve the highest level of outperformance following a purchase.
 
 ### Greatest Outperformance Following Inside Buys
 |Period|Symbol|Name|Typical Performance|Avg Performance Following Inside Buy|# of Inside Buys|
