@@ -26,7 +26,7 @@ The below metrics pertain to the full S&P 500 from 2010 through 2019.
     - Organon & Co (OGN)
     - Otis Worldwide Corporation (OTIS)
     - Viatris (VTRS)
-    
+
 *You can find the full data set used to compile the above results in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/Sp500InsiderEquityTransactions.zip?raw=true)
 
 ## Filtering to Purchase Acquisitons
@@ -45,6 +45,7 @@ Including this filter noted above, we arrive at 12,502 transactions across 419 c
 
 ## Analysis Results
 As planned, we then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. It would take a while to do the described data collection and analysis by hand! I wrote a [.NET-based (C#) program](https://github.com/TimHanewich/Insider-Buying-Research/tree/master/Program) to expedite this process across each component of the S&P 500. After the program collected and analyzed the necessary data for almost seventy hours straight, we have our results!
+
 *You can find the full analysis sets that was used to compile the below statistics in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/FullResearchSets.zip?raw=true). Each object (file) contains the subject stock, average performance over the ten year timeframe, and performances following each qualifying insider purchase.
 It is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.  
 Summarizing our entire dataset:
