@@ -42,8 +42,8 @@ Not every component of the S&P 500 has been publicly traded from 2010 through 20
 Including this filter noted above, we arrive at 12,502 transactions across 419 companies with well-formed data that can be used in this analysis.
 
 ## Analysis Results
-As planned, we then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. It would take a while to do the described data collection and analysis by hand! I wrote a .NET program to expedite this process across the full S&P 500. After the program collected and analyzed the necessary data for almost seventy hours straight, we have our results!
- In doing so, it is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.  
+As planned, we then compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. It would take a while to do the described data collection and analysis by hand! I wrote a .NET-based (C#) program to expedite this process across each component of the S&P 500. After the program collected and analyzed the necessary data for almost seventy hours straight, we have our results!
+It is clear that stock performance following an insider buy is typically greater than usual returns during a similar timespan.  
 Summarizing our entire dataset:
 |Period|Average S&P 500 Return|Average S&P 500 Component Return Following Inside Buy|
 |-|-|-|
