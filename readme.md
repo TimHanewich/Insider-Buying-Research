@@ -87,6 +87,7 @@ So how do we interpret this? Unsurprisingly, this likely confirms that insiders 
 
 On the flip side, this could mean something very different for the insider buys that went wrong. **Of the 419 companies that we examined, 167 of them (almost 40%!) underperformed following an insider purchase in the long run**. This may be the result of several C-Suite executives purchasing stock in their own company in an attempt to instill the public's confidence in their company's publicly traded common stock. If this is the case, we could further suppose that these insiders are buying stock ahead of particularly trying times (their buying could be interpreted as an attempt to "counteract" this) and in the long run these trying times got the better of the company in the markets.
 
+## Close
 As a rule of thumb, you can expect stocks to outperform in both the short and long term following an insider purchase. But be warned, this is a **general** rule of thumb, not a law. There are many examples in which this has not proven true.  
 
 If you would like to sharpen your investor savvy, reivew the [results of this analysis for each company](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/InsiderBuyPerformanceAnalysis.xlsx?raw=true) to see for yourself which S&P 500 components outperform following an insider buy and which underperform. This will likely help when deciding to invest in the next company who's CEO just spent their salary buying stock!
