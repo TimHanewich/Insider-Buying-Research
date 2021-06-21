@@ -11,7 +11,7 @@ To answer these questions we will assess the performance of S&P 500 components f
 - 180 days
 - 360 days
 
-All of these post-purchase performances will then be averaged together to establish the average performance of this stock following an insider purchase. So, for example, if Boeing (BA) had three insider purchases, the 14-day performance for all three will be averaged to get the "average 14-day performance following an insider purchase", the same will be done for the 30-day, the 90-day, and so on.
+All of these post-purchase performances will then be averaged together to establish the average performance of this stock following an insider purchase. So, for example, if Boeing (BA) had three insider purchases, the 14-day performance for all three will be averaged to get the "average 14-day performance following an insider purchase"; the same will be done for the 30-day, the 90-day, and so on.
 This performance set will then be compared to the stock's average performance (for these same intervals) over the course of 2010 through 2019.  
 By comparing the stock's average performance in ten years (or since IPO) to the stock's immediate performance following an insider purchase, we can gain insight into the correlation between stock price and insider buying.
 
