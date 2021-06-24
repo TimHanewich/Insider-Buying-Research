@@ -53,6 +53,7 @@ It is clear that stock performance following an insider purchase typically outpe
 
 The table below shows the number of companies that have insiders that usually **overperform** following a buy versus those that **underperform**. As you can see, about 62% of the S&P 500 have insiders that have historically outperformed typical capital returns in the short and long term after executing their buy orders.
 
+(The "Outperformed" and "Underperformed" columns refer to the number of S&P 500 components)
 |Period|Outperformed|Underperformed|Outperformed %|Underperformed %|
 |-|-|-|-|-|
 |14 Days|244|157|61%|39%|
