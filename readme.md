@@ -56,11 +56,11 @@ The table below shows the number of companies that have insiders that usually **
 (The "Outperformed" and "Underperformed" columns refer to the number of S&P 500 components)
 |Period|Outperformed|Underperformed|Outperformed %|Underperformed %|
 |-|-|-|-|-|
-|14 Days|244|157|61%|39%|
-|30 Days|253|148|63%|37%|
-|90 Days|250|151|62%|38%|
-|180 Days|265|136|66%|34%|
-|360 Days|239|162|60%|40%|
+|14 Day|244|157|61%|39%|
+|30 Day|253|148|63%|37%|
+|90 Day|250|151|62%|38%|
+|180 Day|265|136|66%|34%|
+|360 Day|239|162|60%|40%|
 
 We can also average each period performance of each component to get the average performance for each period in each scenario - typical returns versus returns following an insider buy.
 |Period|Average S&P 500 Return|Average S&P 500 Component Return Following Inside Buy|
