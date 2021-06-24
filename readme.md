@@ -62,7 +62,7 @@ The table below shows the number of companies that have insiders that usually **
 |180 Days|265|136|66%|34%|
 |360 Days|239|162|60%|40%|
 
-Summarizing our entire dataset:
+We can also average each period performance of each component to get the average performance for each period in each scenario - typical returns versus returns following an insider buy.
 |Period|Average S&P 500 Return|Average S&P 500 Component Return Following Inside Buy|
 |-|-|-|
 |14 Day|0.5%|1.2%|
