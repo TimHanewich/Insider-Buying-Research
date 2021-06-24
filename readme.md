@@ -51,7 +51,7 @@ As planned, we compare the average performance of each stock following an inside
 
 It is clear that stock performance following an insider purchase typically outperforms in both the short and long term as compared to the stock's typical historical returns. 
 
-The table below shows the number of companies that have insider traders that usually **overperform** following a buy versus those that **underperform**. As you can see, in both the short and long term inside buyers will typically outperform the standard returns in a bit more than 60% of the S&P 500.
+The table below shows the number of companies that have insider traders that usually **overperform** following a buy versus those that **underperform**. As you can see, about 62% of the S&P 500 have insiders that have historically outperformed typical capital returns in the short and long term after executing their buy orders.
 
 |Period|Outperformed|Underperformed|Outperformed %|Underperformed %|
 |-|-|-|-|-|
