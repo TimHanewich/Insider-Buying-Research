@@ -49,7 +49,18 @@ As planned, we compare the average performance of each stock following an inside
 
 *You can find the full analysis sets that was used to compile the below statistics in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/FullResearchSets.zip?raw=true). Each object (file) contains the subject stock, average performance over the ten year timeframe, and performances following each qualifying insider purchase.*
 
-It is clear that stock performance following an insider purchase typically outperforms in both the short and long term as compared to the stock's typical historical returns.  
+It is clear that stock performance following an insider purchase typically outperforms in both the short and long term as compared to the stock's typical historical returns. 
+
+The table below shows the number of companies that have insider traders that usually **overperform** following a buy versus those that **underperform**. As you can see, in both the short and long term inside buyers will typically outperform the standard returns in a bit more than 60% of the S&P 500.
+
+|Period|Outperformed|Underperformed|Outperformed %|Underperformed %|
+|-|-|-|-|-|
+|14 Days|244|157|61%|39%|
+|30 Days|253|148|63%|37%|
+|90 Days|250|151|62%|38%|
+|180 Days|265|136|66%|34%|
+|360 Days|239|162|60%|40%|
+
 Summarizing our entire dataset:
 |Period|Average S&P 500 Return|Average S&P 500 Component Return Following Inside Buy|
 |-|-|-|
