@@ -45,7 +45,7 @@ Not every component of the S&P 500 has been publicly traded from 2010 through 20
 Including this filter noted above, we arrive at 12, insider purchase transactions across 419 companies with well-formed data that can be used in this analysis.
 
 ## Analysis Results
-As planned, we compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. It would take a while to do the described data collection and analysis by hand! I wrote a [.NET-based (C#) program](https://github.com/TimHanewich/Insider-Buying-Research/tree/master/Program) to expedite this process across each component of the S&P 500. After the program collected and analyzed the necessary data for almost seventy hours straight, we have our results!
+As planned, we compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. It would take a while to do the described data collection and analysis by hand! I wrote a [.NET-based (C#) program](https://github.com/TimHanewich/Insider-Buying-Research/tree/master/Program) to expedite this process across each component of the S&P 500. After the program collected and analyzed the necessary data for almost seventy uninterupted hours, we have our results!
 
 *You can find the full analysis sets that was used to compile the below statistics in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/FullResearchSets.zip?raw=true). Each object (file) contains the subject stock, average performance over the ten year timeframe, and performances following each qualifying insider purchase.*
 
