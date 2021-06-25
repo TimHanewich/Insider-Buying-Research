@@ -36,7 +36,7 @@ The below metrics describe the number of insider purchase acquisitions during 20
 - Transactions: 13,639
 - Average per company: 27
 - Median per company: 10
-    - As seen above, there were several outliers that had a disproportionately large number of insider buys between 2010-2019. The gap between the the average (mean) and median is indicative of this.
+    - As seen above, there were several outliers that had a disproportionately large number of insider buys between 2010-2019. The gap between the average (mean) and median is indicative of this.
 - Most transactions: Bank of America (BAC) with 1,769 insider buys
 - 32 companies were tied for fewest insider purchases during this time period with 0 trades.
 
