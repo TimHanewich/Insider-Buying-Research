@@ -64,7 +64,7 @@ The table below shows the number of companies that have insiders that usually **
 |180 Day|265|136|66%|34%|
 |360 Day|239|162|60%|40%|
 
-*Note that there were also several companies that do not fall in either bucket - stock performance drew level with typical returns following insider buys*
+*Note that there were also several companies that do not fall in either bucket - stock performance drew level with typical returns following insider buys.*
 
 We can also average each period performance of each component to get the average performance for each period in each scenario - typical returns versus returns following an insider buy.
 |Period|Average S&P 500 Return|Average S&P 500 Component Return Following Inside Buy|
