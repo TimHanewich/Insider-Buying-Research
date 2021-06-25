@@ -44,7 +44,7 @@ The below metrics describe the number of insider purchase acquisitions during 20
 Not every component of the S&P 500 has been publicly traded from 2010 through 2019. Our research is exclusively focusing on this ten year span. Our data could easily become skewed if we forecasted a ten year average return for a company that has only been traded recently. For this reason, we will only focus on companies that have been trading during the full 2010-2019 timespan.  
 Including this filter noted above, we arrive at 9,611 insider purchase transactions across 401 companies with well-formed data that can be used in this analysis.
 
-*A spreadsheet with the count of transactions per S&P 500 component is available at the end of this writing*
+*A spreadsheet with the count of transactions per S&P 500 component is available at the end of this writing.*
 
 ## Analysis Results
 As planned, we compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. It would take a while to do the described data collection and analysis by hand! I wrote a [.NET-based (C#) program](https://github.com/TimHanewich/Insider-Buying-Research/tree/master/Program) to expedite this process across each component of the S&P 500. After the program collected and analyzed the necessary data for almost seventy uninterupted hours, we have our results!
