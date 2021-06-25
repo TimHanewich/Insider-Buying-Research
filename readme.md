@@ -3,7 +3,7 @@ Peter Lynch, the legendary former manager of Fidelity's Magellan fund once said 
 But is this always the case? Is every insider purchase followed by a gain? By how much do these gains eclipse that of the stock's usual performance? Is it possible that in some cases this is nothing more than a C-level officer trying to instill the public's confidence in the stock by putting his own money on the line? In this article I will attempt to answer these questions with candid research.
 
 ## The Analysis
-To answer these questions we will assess the performance of S&P 500 components following insider purchases made between 2010 through 2019. For each insider purchase, we will measure the performance of the stock at the following intervals after the purchase date:
+To answer these questions, we will assess the performance of S&P 500 components following insider purchases made between 2010 through 2019. For each insider purchase, we will measure the performance of the stock at the following intervals after the purchase date:
 
 - 14 days
 - 30 days
@@ -16,7 +16,7 @@ This performance set will then be compared to the stock's average performance (f
 By comparing the stock's average performance in ten years to the stock's immediate performance following an insider purchase, we can gain insight into the correlation between insider buying and stock performance.
 
 ## Filtering to 2010-2019 Transactions
-We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/docs/#latest-transactions. Aletheia's service provides the ability to query insider transactions for a particular company and filter the results to only equity-based security purchases that occured between 2010-2019.  
+We will be using Aletheia's (https://aletheiaapi.com/) API service for accessing insider trading data for the S&P 500. Aletheia has a terrific endpoint that provides insider trading history for any publicly traded company: https://aletheiaapi.com/docs/#latest-transactions. Aletheia's service provides the ability to query insider transactions for a particular company and filter the results to only equity-based security purchases that occurred between 2010-2019.  
 The below metrics pertain to the full S&P 500 from 2010 through 2019.  
 - Insider Transactions: 584,246
 - Average per company: 1,162
@@ -30,7 +30,7 @@ The below metrics pertain to the full S&P 500 from 2010 through 2019.
 
 *You can find the full data set used to compile the above results in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/Sp500InsiderEquityTransactions.zip?raw=true).*
 
-## Filtering to Purchase Acquisitons
+## Filtering to Purchase Acquisitions
 Building from the time-filtered transactions set from above, we now will further filter our data set to only include **Open market or private purchases of securities**. This means the insiders themselves voluntarily purchased shares of their associated company with their own funding - putting their own money on the line! This is (supposedly) the most indicative of bullish insider sentiment.
 The below metrics describe the number of insider purchase acquisitions during 2010-2019 for the S&P 500:
 - Transactions: 13,639
@@ -41,15 +41,15 @@ The below metrics describe the number of insider purchase acquisitions during 20
 - 32 companies were tied for fewest insider purchases during this time period with 0 trades.
 
 ## Removing companies with insufficient historical data
-Not every component of the S&P 500 has been publicly traded from 2010 through 2019. Our research is exclusively focusing on this ten year span. Our data could easily become skewed if we forecasted a ten year average return for a company that has only been traded recently. For this reason, we will only focus on companies that have been trading during the full 2010-2019 timespan.  
+Not every component of the S&P 500 has been publicly traded from 2010 through 2019. Our research is exclusively focusing on this ten-year span. Our data could easily become skewed if we forecasted a ten-year average return for a company that has only been traded recently. For this reason, we will only focus on companies that have been trading during the full 2010-2019 timespan.  
 Including this filter noted above, we arrive at 9,611 insider purchase transactions across 401 companies with well-formed data that can be used in this analysis.
 
 *A spreadsheet with the count of transactions per S&P 500 component is available at the end of this writing.*
 
 ## Analysis Results
-As planned, we compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. It would take a while to do the described data collection and analysis by hand! I wrote a [.NET-based (C#) program](https://github.com/TimHanewich/Insider-Buying-Research/tree/master/Program) to expedite this process across each component of the S&P 500. After the program collected and analyzed the necessary data for almost seventy uninterupted hours, we have our results!
+As planned, we compare the average performance of each stock following an insider purchase to the average returns over the ten year period from 2010 through 2019. It would take a while to do the described data collection and analysis by hand! I wrote a [.NET-based (C#) program](https://github.com/TimHanewich/Insider-Buying-Research/tree/master/Program) to expedite this process across each component of the S&P 500. After the program collected and analyzed the necessary data for almost seventy uninterrupted hours, we have our results!
 
-*You can find the full analysis sets that were used to compile the below statistics in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/FullResearchSets.zip?raw=true). Each object (file) contains the subject stock, average performance over the ten year timeframe, and performances following each qualifying insider purchase.*
+*You can find the full analysis sets that were used to compile the below statistics in JSON format [here](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/ResearchData/FullResearchSets.zip?raw=true). Each object (file) contains the subject stock, average performance over the ten-year timeframe, and performances following each qualifying insider purchase.*
 
 It is clear that stock performance following an insider purchase typically outperforms in both the short and long term as compared to the stock's typical historical returns. 
 
@@ -99,7 +99,7 @@ We can also take a closer look at the opposite - which stocks are likely to lag 
 ## Results Interpretation
 The evidence clearly shows that, on average, stocks will outperform following an insider purchase in both the short and long term. In the short term, this outperformance is sometimes as much as double the typical capital return. In the long term, this edge hovers around 415 basis points above the typical capital returns you would see in a non-insider purchase period.
 
-So how do we interpret this? Unsurprisingly, this likely confirms that insiders are trading with "insider information", information that they uniquely benefit from due to their close relationship with the subject company. This information allows them to better predict future prospects of the company and to coordinate their purchasing with company press releases, product development breakthroughs, or industry-related news. This is strongly evident in the table shown above that highlights the highest outperforming stocks following insider purchases; these insiders may have made trades selectively ahead of important achievements in the company's results or R&D. The insider information allowed them the foresight to get into the stock at desireable levels.
+So how do we interpret this? Unsurprisingly, this likely confirms that insiders are trading with "insider information", information that they uniquely benefit from due to their close relationship with the subject company. This information allows them to better predict future prospects of the company and to coordinate their purchasing with company press releases, product development breakthroughs, or industry-related news. This is strongly evident in the table shown above that highlights the highest outperforming stocks following insider purchases; these insiders may have made trades selectively ahead of important achievements in the company's results or R&D. The insider information allowed them the foresight to get into the stock at desirable levels.
 
 On the flip side, this could mean something very different for the insider buys that went wrong. **Of the 401 companies that we examined, 162 of them (40%) underperformed following an insider purchase in the long run**. This may be the result of several C-Suite executives purchasing stock in their own company in an attempt to instill the public's confidence in their company's publicly traded common stock. If this is the case, we could further suppose that these insiders are buying stock ahead of particularly trying times (their buying could be interpreted as an attempt to "counteract" this) and in the long run these trying times got the better of the company in the markets.
 
@@ -108,4 +108,4 @@ Broadly speaking, you can expect stocks to outperform in both the short and long
 
 For the developers out there, [Aletheia](https://aletheiaapi.com/) provides a free [Insider Trading Webhook](https://aletheiaapi.com/docs/#insider-trading-webhook). You can specify a company, insider, security type, or transaction type and have Aletheia's webhook service call your endpoint within seconds of the transactions being reported to the Securities Exchange Commission (SEC). 
 
-If you would like to sharpen your investor savvy, reivew the [results of this analysis for each company](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/InsiderBuyPerformanceAnalysis.xlsx?raw=true) to see for yourself which S&P 500 components outperform following an insider buy and which underperform. This will likely help when deciding to invest in the next company who's CEO just spent their salary buying their own stock!
+If you would like to sharpen your investor savvy, review the [results of this analysis for each company](https://github.com/TimHanewich/Insider-Buying-Research/blob/master/InsiderBuyPerformanceAnalysis.xlsx?raw=true) to see for yourself which S&P 500 components outperform following an insider buy and which underperform. This will likely help when deciding to invest in the next company who's CEO just spent their salary buying their own stock!
